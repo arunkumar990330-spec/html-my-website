@@ -74,7 +74,7 @@
         }
 
         /* =========================================================
-            CD RECOVERY MIS DASHBOARD
+           CD RECOVERY MIS DASHBOARD
         ========================================================= */
 
         #cdRecoveryApp {
@@ -518,7 +518,7 @@
 
 
         /* =========================================================
-            REPORT FORMAT DOWNLOADS - ADDED ONLY
+           REPORT FORMAT DOWNLOADS - ADDED ONLY
         ========================================================= */
         .report-format-wrapper {
             padding: 24px;
@@ -763,19 +763,19 @@
             </a>
 
             <a href="#"
-               onclick="loadPage('employees', event)"
-               class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs text-slate-600 hover:bg-slate-50 transition-colors">
-
-                <i class="fa-solid fa-users w-4 text-center"></i>
-                Employee Directory
-            </a>
-
-            <a href="#"
                onclick="loadPage('analytics', event)"
                class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs text-slate-600 hover:bg-slate-50 transition-colors">
 
                 <i class="fa-solid fa-chart-line w-4 text-center"></i>
                 Analytics Report
+            </a>
+
+            <a href="#"
+               onclick="loadPage('employees', event)"
+               class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs text-slate-600 hover:bg-slate-50 transition-colors">
+
+                <i class="fa-solid fa-users w-4 text-center"></i>
+                Employee Directory
             </a>
 
             <a href="#"
@@ -969,45 +969,80 @@
             <div id="content-analytics"
                  class="hidden h-full">
 
-                <div class="flex flex-col h-full gap-4">
+                <div class="h-full flex flex-col gap-4">
 
-                    <!-- TOP REPORT VIEWS DROPDOWN -->
+                    <!-- REPORT VIEWS -->
 
-                    <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs flex items-center justify-between shrink-0 gap-4 flex-wrap">
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-filter text-indigo-600 text-xs"></i>
-                            <span class="text-xs font-bold text-slate-700">Select Report View:</span>
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs shrink-0">
+
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-2 mb-3">
+                            Report Views
+                        </p>
+
+                        <div class="flex flex-wrap gap-2">
+
+                            <button onclick="handleAnalyticsBtn(1, event)"
+                                    class="analytics-btn px-4 py-2.5 rounded-xl text-xs font-semibold bg-indigo-50 text-indigo-600 transition-all flex items-center gap-2 cursor-pointer">
+
+                                <span>CD RECOVERY DASHBOARD</span>
+                                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+
+                            </button>
+
+                            <button onclick="handleAnalyticsBtn(2, event)"
+                                    class="analytics-btn px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 cursor-pointer">
+
+                                <span>REPORT FORMAT</span>
+                                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+
+                            </button>
+
+                            <button onclick="handleAnalyticsBtn(3, event)"
+                                    class="analytics-btn px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 cursor-pointer">
+
+                                <span>3</span>
+                                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+
+                            </button>
+
+                            <button onclick="handleAnalyticsBtn(4, event)"
+                                    class="analytics-btn px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 cursor-pointer">
+
+                                <span>4</span>
+                                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+
+                            </button>
+
+                            <button onclick="handleAnalyticsBtn(5, event)"
+                                    class="analytics-btn px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 cursor-pointer">
+
+                                <span>5</span>
+                                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+
+                            </button>
+
                         </div>
-                        <div class="flex-1 max-w-xs">
-                            <select id="analytics-dropdown-selector" onchange="handleAnalyticsDropdown(this.value)" class="mis-select-dropdown w-full font-semibold text-xs py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer">
-                                <option value="1">CD RECOVERY DASHBOARD</option>
-                                <option value="2">REPORT FORMAT</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
+
                     </div>
 
-
-                    <!-- RIGHT/FULL WIDTH CONTENT -->
+                    <!-- REPORT RESULT ONLY -->
 
                     <div id="analytics-display-content"
                          class="flex-1 bg-white rounded-2xl border border-slate-200 shadow-xs overflow-auto">
 
-                        <!-- CD RECOVERY IS LOADED HERE -->
-
                         <div class="p-8 text-center">
 
                             <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3">
-
                                 <i class="fa-solid fa-chart-line"></i>
-
                             </div>
 
-                            <h3 class="text-sm font-bold text-slate-800">
-                                CD Recovery Dashboard Loading...
+                            <h3 class="text-base font-bold text-slate-800">
+                                Analytics Report
                             </h3>
+
+                            <p class="text-xs text-slate-400 mt-1">
+                                Select a Report View to display the result.
+                            </p>
 
                         </div>
 
@@ -1016,6 +1051,392 @@
                 </div>
 
             </div>
+
+
+            <!-- =====================================================
+                 EMPLOYEE DIRECTORY
+            ====================================================== -->
+
+            <div id="content-employees"
+                 class="hidden space-y-6">
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs">
+
+                    <div id="mainDashboard"
+                         class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-6">
+
+                        <div class="card bg-slate-50 border border-slate-200 rounded-xl p-4 text-center cursor-pointer transition-all hover:bg-slate-100"
+                             onclick="showRole('all')">
+
+                            <h3 class="text-xs font-medium text-slate-500 mb-1">
+                                Total Employee
+                            </h3>
+
+                            <h2 id="totalCount"
+                                class="text-xl font-bold text-indigo-600">
+                                0
+                            </h2>
+
+                        </div>
+
+
+                        <div class="card bg-slate-50 border border-slate-200 rounded-xl p-4 text-center cursor-pointer transition-all hover:bg-slate-100"
+                             onclick="showRole('Manager')">
+
+                            <h3 class="text-xs font-medium text-slate-500 mb-1">
+                                Manager
+                            </h3>
+
+                            <h2 id="managerCount"
+                                class="text-xl font-bold text-indigo-600">
+                                0
+                            </h2>
+
+                        </div>
+
+
+                        <div class="card bg-slate-50 border border-slate-200 rounded-xl p-4 text-center cursor-pointer transition-all hover:bg-slate-100"
+                             onclick="showRole('Assistant Manager')">
+
+                            <h3 class="text-xs font-medium text-slate-500 mb-1">
+                                Asst Manager
+                            </h3>
+
+                            <h2 id="asstManagerCount"
+                                class="text-xl font-bold text-indigo-600">
+                                0
+                            </h2>
+
+                        </div>
+
+
+                        <div class="card bg-slate-50 border border-slate-200 rounded-xl p-4 text-center cursor-pointer transition-all hover:bg-slate-100"
+                             onclick="showRole('Team Leader')">
+
+                            <h3 class="text-xs font-medium text-slate-500 mb-1">
+                                Team Leader
+                            </h3>
+
+                            <h2 id="teamLeaderCount"
+                                class="text-xl font-bold text-indigo-600">
+                                0
+                            </h2>
+
+                        </div>
+
+
+                        <div class="card bg-slate-50 border border-slate-200 rounded-xl p-4 text-center cursor-pointer transition-all hover:bg-slate-100"
+                             onclick="showRole('MIS Executive')">
+
+                            <h3 class="text-xs font-medium text-slate-500 mb-1">
+                                MIS Executive
+                            </h3>
+
+                            <h2 id="misCount"
+                                class="text-xl font-bold text-indigo-600">
+                                0
+                            </h2>
+
+                        </div>
+
+
+                        <div class="card bg-slate-50 border border-slate-200 rounded-xl p-4 text-center cursor-pointer transition-all hover:bg-slate-100"
+                             onclick="showRole('Field Executive')">
+
+                            <h3 class="text-xs font-medium text-slate-500 mb-1">
+                                Field Executive
+                            </h3>
+
+                            <h2 id="fieldCount"
+                                class="text-xl font-bold text-indigo-600">
+                                0
+                            </h2>
+
+                        </div>
+
+
+                        <div class="card bg-slate-50 border border-slate-200 rounded-xl p-4 text-center cursor-pointer transition-all hover:bg-slate-100"
+                             onclick="showRole('Tele Caller')">
+
+                            <h3 class="text-xs font-medium text-slate-500 mb-1">
+                                Tele Caller
+                            </h3>
+
+                            <h2 id="teleCount"
+                                class="text-xl font-bold text-indigo-600">
+                                0
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="button-box flex flex-wrap gap-2 mb-6 items-center justify-center">
+
+                        <button class="product-btn px-4 py-2 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-all cursor-pointer"
+                                onclick="showProduct('all', this)">
+                            All Products
+                        </button>
+
+                        <button class="product-btn px-4 py-2 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-all cursor-pointer"
+                                onclick="showProduct('Hdfc-Cd', this)">
+                            Hdfc-Cd
+                        </button>
+
+                        <button class="product-btn px-4 py-2 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-all cursor-pointer"
+                                onclick="showProduct('Hdfc-Cd-Recovery', this)">
+                            Hdfc-Cd-Recovery
+                        </button>
+
+                        <button class="product-btn px-4 py-2 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-all cursor-pointer"
+                                onclick="showProduct('Hdfc-Card', this)">
+                            Hdfc-Card
+                        </button>
+
+                        <button class="product-btn px-4 py-2 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-all cursor-pointer"
+                                onclick="showProduct('Axis-Bkt-1', this)">
+                            Axis-Bkt-1
+                        </button>
+
+                        <button class="product-btn px-4 py-2 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-all cursor-pointer"
+                                onclick="showProduct('Axis-Ka-business loan', this)">
+                            Axis-Ka-business loan
+                        </button>
+
+                        <button class="product-btn px-4 py-2 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-all cursor-pointer"
+                                onclick="showProduct('Axis-bu-woff', this)">
+                            Axis-bu-woff
+                        </button>
+
+                        <button class="product-btn px-4 py-2 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-all cursor-pointer"
+                                onclick="showProduct('Sriram-Flexy', this)">
+                            Sriram-Flexy
+                        </button>
+
+                        <button class="product-btn px-4 py-2 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-all cursor-pointer"
+                                onclick="showProduct('Sriram-X & Bkt', this)">
+                            Sriram-X & Bkt
+                        </button>
+
+                        <button class="product-btn px-4 py-2 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-all cursor-pointer"
+                                onclick="showProduct('Iifl-Woff', this)">
+                            Iifl-Woff
+                        </button>
+
+                        <button class="product-btn px-4 py-2 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-all cursor-pointer"
+                                onclick="showProduct('Ikf-Woff', this)">
+                            Ikf-Woff
+                        </button>
+
+                        <button class="product-btn px-4 py-2 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-all cursor-pointer"
+                                onclick="showProduct('Bajaj-PL-Woff', this)">
+                            Bajaj-PL-Woff
+                        </button>
+
+                        <button class="download-btn px-4 py-2 rounded-full text-xs font-semibold bg-amber-500 text-white hover:bg-amber-600 transition-all cursor-pointer shadow-sm"
+                                onclick="downloadExcel()">
+                            Download Excel
+                        </button>
+
+                    </div>
+
+
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
+
+                        <input type="text"
+                               id="searchInput"
+                               onkeyup="searchTable()"
+                               placeholder="Search Employee..."
+                               class="px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-800">
+
+                        <button onclick="addEmployee()"
+                                class="px-5 py-2 bg-indigo-600 text-white rounded-xl text-xs font-semibold hover:bg-indigo-700 transition-all cursor-pointer shadow-sm">
+                            Add Employee
+                        </button>
+
+                    </div>
+
+
+                    <div class="emp-table-container overflow-x-auto">
+
+                        <table id="employeeTable">
+
+                            <tr>
+                                <th>No</th>
+                                <th>EMP Code</th>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>Product</th>
+                            </tr>
+
+                            <tr><td>1</td><td>MM0001</td><td>Hari Karan M</td><td>Manager</td><td>ALL Product</td></tr>
+                            <tr><td>2</td><td>MM0005</td><td>Arun Kumar R</td><td>Assistant Manager</td><td>ALL Product</td></tr>
+                            <tr><td>3</td><td>SKAC02449</td><td>Dinesh Jayanth C</td><td>Team Leader</td><td>Sriram-X & Bkt</td></tr>
+                            <tr><td>4</td><td>MM0009</td><td>Saravanan Tk</td><td>Team Leader</td><td>Hdfc-Card</td></tr>
+                            <tr><td>5</td><td>AVY0003</td><td>Dhivyalakshmi S</td><td>Team Leader</td><td>Hdfc-Cd</td></tr>
+                            <tr><td>6</td><td>SKAC03770</td><td>Anand R</td><td>Team Leader</td><td>Axis-Bkt-1</td></tr>
+                            <tr><td>7</td><td>SKAC05040</td><td>Janani S</td><td>Team Leader</td><td>Sriram-Flexy</td></tr>
+                            <tr><td>8</td><td>MM0011</td><td>Siva A</td><td>MIS Executive</td><td>ALL Product</td></tr>
+                            <tr><td>9</td><td>AVYC0010</td><td>Gopinath R</td><td>Field Executive</td><td>Hdfc-Cd</td></tr>
+                            <tr><td>10</td><td>AVYC0044</td><td>Dhanasekar A</td><td>Field Executive</td><td>Hdfc-Cd</td></tr>
+                            <tr><td>11</td><td>AVYC005</td><td>Jayaraj V</td><td>Field Executive</td><td>Hdfc-Cd</td></tr>
+                            <tr><td>12</td><td>AVYC007</td><td>Velu C</td><td>Field Executive</td><td>Hdfc-Cd</td></tr>
+                            <tr><td>13</td><td>AVYC01194</td><td>Gunasekaran A</td><td>Field Executive</td><td>Hdfc-Card</td></tr>
+                            <tr><td>14</td><td>AVYC01208</td><td>Arun Balaji S G T</td><td>Field Executive</td><td>Hdfc-Card</td></tr>
+                            <tr><td>15</td><td>AVYC01304</td><td>Chandrasekar C</td><td>Field Executive</td><td>Hdfc-Cd</td></tr>
+                            <tr><td>16</td><td>SKAC01478</td><td>Purushothaman M</td><td>Field Executive</td><td>Hdfc-Cd</td></tr>
+                            <tr><td>17</td><td>SKAC03999</td><td>Mohamed Mustafa</td><td>Field Executive</td><td>Axis-Bkt-1</td></tr>
+                            <tr><td>18</td><td>SKAC04238</td><td>Chidambaram D</td><td>Field Executive</td><td>Axis-Bkt-1</td></tr>
+                            <tr><td>19</td><td>SKAC04240</td><td>Santhakumar S</td><td>Field Executive</td><td>Hdfc-Card</td></tr>
+                            <tr><td>20</td><td>SKAC04289</td><td>Martin Samuvel H</td><td>Field Executive</td><td>Axis-Bkt-1</td></tr>
+                            <tr><td>21</td><td>SKAC04954</td><td>Muthucharan E</td><td>Field Executive</td><td>Axis-Bkt-1</td></tr>
+                            <tr><td>22</td><td>SKAC04981</td><td>Sivasankar B</td><td>Field Executive</td><td>Axis-Bkt-1</td></tr>
+                            <tr><td>23</td><td>SKAC05268</td><td>Balaji M</td><td>Field Executive</td><td>Sriram-X & Bkt</td></tr>
+                            <tr><td>24</td><td>SKAC05302</td><td>Anbazhagan R</td><td>Field Executive</td><td>Axis-Bkt-1</td></tr>
+                            <tr><td>25</td><td>AVY0008</td><td>Pavithra R</td><td>Tele Caller</td><td>Hdfc-Cd-Recovery</td></tr>
+                            <tr><td>26</td><td>AVY0009</td><td>Elavarasi D</td><td>Tele Caller</td><td>Hdfc-Cd-Recovery</td></tr>
+                            <tr><td>27</td><td>AVY0012</td><td>Keerthika M</td><td>Tele Caller</td><td>Hdfc-Cd-Recovery</td></tr>
+                            <tr><td>28</td><td>AVYC0043</td><td>Ashwini R</td><td>Tele Caller</td><td>Hdfc-Card</td></tr>
+                            <tr><td>29</td><td>SKAC01754</td><td>Gayathri S</td><td>Tele Caller</td><td>Axis-Bkt-1</td></tr>
+                            <tr><td>30</td><td>SKAC03281</td><td>Gobika K</td><td>Tele Caller</td><td>Hdfc-Cd</td></tr>
+                            <tr><td>31</td><td>SKAC03282</td><td>Thulasimani T</td><td>Tele Caller</td><td>Hdfc-Cd</td></tr>
+                            <tr><td>32</td><td>SKAC03288</td><td>Subasri M</td><td>Tele Caller</td><td>Hdfc-Cd</td></tr>
+                            <tr><td>33</td><td>SKAC03806</td><td>Pooja S</td><td>Tele Caller</td><td>Axis-Bkt-1</td></tr>
+                            <tr><td>34</td><td>SKAC05219</td><td>John Regan R</td><td>Tele Caller</td><td>Axis-Bkt-1</td></tr>
+                            <tr><td>35</td><td>SKAC05300</td><td>Naveena R</td><td>Tele Caller</td><td>Axis-Bkt-1</td></tr>
+                            <tr><td>36</td><td>AVYC01632</td><td>JAYAMARISELVAM K</td><td>Tele Caller</td><td>Hdfc-Cd</td></tr>
+                            <tr><td>37</td><td>SKAC03871</td><td>PRIYANKA D</td><td>Tele Caller</td><td>Iifl-Woff</td></tr>
+                            <tr><td>38</td><td>SKAC04520</td><td>TAMIZH KANI S</td><td>Tele Caller</td><td>Iifl-Woff</td></tr>
+                            <tr><td>39</td><td>SKAC04664</td><td>VENNELA K</td><td>Tele Caller</td><td>Iifl-Woff</td></tr>
+                            <tr><td>40</td><td>SKAC04978</td><td>KOMATHI R</td><td>Team Leader</td><td>Iifl-Woff</td></tr>
+                            <tr><td>41</td><td>SKAC04559</td><td>VINOTH D</td><td>Team Leader</td><td>Sriram-Flexy</td></tr>
+                            <tr><td>42</td><td>SKAC05161</td><td>HEMA MALINI S</td><td>Tele Caller</td><td>Sriram-Flexy</td></tr>
+                            <tr><td>43</td><td>SKAC05207</td><td>MIROSHINI M</td><td>Tele Caller</td><td>Sriram-Flexy</td></tr>
+                            <tr><td>44</td><td>SKAC05248</td><td>Geethanjali B</td><td>Team Leader</td><td>Bajaj-PL-Woff</td></tr>
+                            <tr><td>45</td><td>SKAC04972</td><td>AMUTHA S</td><td>Tele Caller</td><td>Ikf-Woff</td></tr>
+                            <tr><td>46</td><td>SKAC05287</td><td>PERIYARDASAN N</td><td>Tele Caller</td><td>Ikf-Woff</td></tr>
+                            <tr><td>47</td><td>SKAC05361</td><td>SANTHIYA M</td><td>Tele Caller</td><td>Ikf-Woff</td></tr>
+                            <tr><td>48</td><td>SKAC05398</td><td>VASANTHAM D</td><td>Field Executive</td><td>Axis-Bkt-1</td></tr>
+                            <tr><td>49</td><td>SKAC05422</td><td>SHAKTHI SREE P</td><td>Tele Caller</td><td>Bajaj-PL-Woff</td></tr>
+                            <tr><td>50</td><td>SKAC05423</td><td>PAVITHRA V</td><td>Tele Caller</td><td>Sriram-Flexy</td></tr>
+                            <tr><td>51</td><td>SKAC05362</td><td>SHALINI B</td><td>Tele Caller</td><td>Bajaj-PL-Woff</td></tr>
+                            <tr><td>52</td><td>SKAC03617</td><td>BHAGYARAJAN M</td><td>Tele Caller</td><td>Axis-Ka-business loan</td></tr>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SETTINGS -->
+
+            <div id="content-settings"
+                 class="hidden h-full bg-white rounded-2xl border border-slate-200 p-8 overflow-y-auto">
+
+                <div class="max-w-md mx-auto">
+
+                    <div class="text-center mb-6">
+
+                        <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3">
+
+                            <i class="fa-solid fa-user-lock"></i>
+
+                        </div>
+
+                        <h3 class="text-base font-bold text-slate-800">
+                            Login Credentials
+                        </h3>
+
+                        <p class="text-xs text-slate-400 mt-1">
+                            Change User ID and Password
+                        </p>
+
+                    </div>
+
+                    <form id="credential-change-form"
+                          onsubmit="changeLoginCredentials(event)"
+                          class="space-y-4">
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">
+                                Current User ID
+                            </label>
+
+                            <input type="text"
+                                   id="current-login-user"
+                                   required
+                                   autocomplete="off"
+                                   class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">
+                                Current Password
+                            </label>
+
+                            <input type="password"
+                                   id="current-login-password"
+                                   required
+                                   autocomplete="current-password"
+                                   class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">
+                                New User ID
+                            </label>
+
+                            <input type="text"
+                                   id="new-login-user"
+                                   required
+                                   autocomplete="off"
+                                   class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">
+                                New Password
+                            </label>
+
+                            <input type="password"
+                                   id="new-login-password"
+                                   required
+                                   autocomplete="new-password"
+                                   class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">
+                                Confirm New Password
+                            </label>
+
+                            <input type="password"
+                                   id="confirm-login-password"
+                                   required
+                                   autocomplete="new-password"
+                                   class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500">
+                        </div>
+
+                        <button type="submit"
+                                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl transition-all shadow-lg shadow-indigo-500/25 text-xs tracking-wide uppercase cursor-pointer">
+                            Change User ID & Password
+                        </button>
+
+                        <p id="credential-message"
+                           class="text-xs font-semibold text-center min-h-[18px]">
+                        </p>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
 
         </div>
 
@@ -1025,690 +1446,4010 @@
 
 
 <!-- =========================================================
-     SCRIPTS & APP LOGIC
+     JAVASCRIPT
 ========================================================= -->
 
 <script>
-    let currentUser = null;
-    let clockInterval = null;
 
-    function initApp() {
-        // Check local storage login state if any
+let employees = [];
+
+
+/* =========================================================
+   MAIN APP
+========================================================= */
+
+function initApp() {
+
+    initClock();
+
+    loadEmployees();
+
+    showProduct('all');
+
+}
+
+
+/* =========================================================
+   MAIN CLOCK
+========================================================= */
+
+function initClock() {
+
+    updateClock();
+
+    setInterval(updateClock, 1000);
+
+}
+
+
+function updateClock() {
+
+    const now = new Date();
+
+    let hours = now.getHours();
+
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+
+    hours = hours % 12;
+
+    hours = hours ? hours : 12;
+
+    const formattedHours = String(hours).padStart(2, '0');
+
+    const timeString =
+        `${formattedHours}:${minutes}:${seconds} ${ampm}`;
+
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+
+    const dateString =
+        now.toLocaleDateString(undefined, options);
+
+    const timeEl =
+        document.getElementById('live-time');
+
+    const dateEl =
+        document.getElementById('live-date');
+
+    if (timeEl)
+        timeEl.textContent = timeString;
+
+    if (dateEl)
+        dateEl.textContent = dateString;
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+
+/* =========================================================
+   LOGIN CREDENTIALS
+========================================================= */
+
+const LOGIN_USER_KEY = "aiOfficeDashboardLoginUser";
+const LOGIN_PASSWORD_KEY = "aiOfficeDashboardLoginPassword";
+
+const DEFAULT_LOGIN_USER = "ADMIN";
+const DEFAULT_LOGIN_PASSWORD = "1234";
+
+function getLoginCredentials() {
+
+    return {
+        user:
+            localStorage.getItem(LOGIN_USER_KEY)
+            || DEFAULT_LOGIN_USER,
+
+        password:
+            localStorage.getItem(LOGIN_PASSWORD_KEY)
+            || DEFAULT_LOGIN_PASSWORD
+    };
+
+}
+
+
+function changeLoginCredentials(event) {
+
+    event.preventDefault();
+
+    const currentUser =
+        document.getElementById("current-login-user")
+        .value
+        .trim();
+
+    const currentPassword =
+        document.getElementById("current-login-password")
+        .value;
+
+    const newUser =
+        document.getElementById("new-login-user")
+        .value
+        .trim();
+
+    const newPassword =
+        document.getElementById("new-login-password")
+        .value;
+
+    const confirmPassword =
+        document.getElementById("confirm-login-password")
+        .value;
+
+    const message =
+        document.getElementById("credential-message");
+
+    const credentials =
+        getLoginCredentials();
+
+
+    message.textContent = "";
+    message.className =
+        "text-xs font-semibold text-center min-h-[18px]";
+
+
+    if (
+        currentUser.toUpperCase() !==
+        credentials.user.toUpperCase()
+        ||
+        currentPassword !== credentials.password
+    ) {
+
+        message.textContent =
+            "Current User ID or Password is incorrect.";
+
+        message.classList.add("text-red-600");
+
+        return;
+
     }
 
-    function togglePassword() {
-        const passInput = document.getElementById('password');
-        const eyeIcon = document.getElementById('eye-icon');
-        if (passInput.type === 'password') {
-            passInput.type = 'text';
-            eyeIcon.classList.remove('fa-eye');
-            eyeIcon.classList.add('fa-eye-slash');
-        } else {
-            passInput.type = 'password';
-            eyeIcon.classList.remove('fa-eye-slash');
-            eyeIcon.classList.add('fa-eye');
-        }
+
+    if (newPassword !== confirmPassword) {
+
+        message.textContent =
+            "New Password and Confirm Password do not match.";
+
+        message.classList.add("text-red-600");
+
+        return;
+
     }
 
-    function handleLogin(event) {
+
+    if (newUser.length < 3) {
+
+        message.textContent =
+            "New User ID must contain at least 3 characters.";
+
+        message.classList.add("text-red-600");
+
+        return;
+
+    }
+
+
+    if (newPassword.length < 4) {
+
+        message.textContent =
+            "New Password must contain at least 4 characters.";
+
+        message.classList.add("text-red-600");
+
+        return;
+
+    }
+
+
+    localStorage.setItem(
+        LOGIN_USER_KEY,
+        newUser
+    );
+
+    localStorage.setItem(
+        LOGIN_PASSWORD_KEY,
+        newPassword
+    );
+
+
+    document
+        .getElementById("credential-change-form")
+        .reset();
+
+
+    message.textContent =
+        "User ID and Password changed successfully.";
+
+    message.classList.add("text-emerald-600");
+
+}
+
+
+function togglePassword() {
+
+    const passwordInput =
+        document.getElementById('password');
+
+    const eyeIcon =
+        document.getElementById('eye-icon');
+
+    if (passwordInput.type === 'password') {
+
+        passwordInput.type = 'text';
+
+        eyeIcon.classList.remove('fa-eye');
+
+        eyeIcon.classList.add('fa-eye-slash');
+
+    } else {
+
+        passwordInput.type = 'password';
+
+        eyeIcon.classList.remove('fa-eye-slash');
+
+        eyeIcon.classList.add('fa-eye');
+
+    }
+
+}
+
+
+function handleLogin(event) {
+
+    event.preventDefault();
+
+
+    const username =
+        document.getElementById('username')
+        .value
+        .trim();
+
+    const password =
+        document.getElementById('password')
+        .value;
+
+    const credentials =
+        getLoginCredentials();
+
+
+    if (
+        username.toUpperCase() !==
+        credentials.user.toUpperCase()
+        ||
+        password !== credentials.password
+    ) {
+
+        alert("Invalid User ID or Password.");
+
+        return;
+
+    }
+
+
+    const displayName =
+        username.toUpperCase();
+
+
+    document.getElementById('sidebar-username')
+        .textContent = displayName;
+
+    document.getElementById('sidebar-avatar')
+        .textContent = displayName.charAt(0);
+
+
+    document.getElementById('login-container')
+        .classList.add('hidden');
+
+    document.getElementById('dashboard-container')
+        .classList.remove('hidden');
+
+    document.getElementById('dashboard-container')
+        .classList.add('flex');
+
+}
+
+
+function handleLogout() {
+
+    document.getElementById('dashboard-container')
+        .classList.add('hidden');
+
+    document.getElementById('dashboard-container')
+        .classList.remove('flex');
+
+    document.getElementById('login-container')
+        .classList.remove('hidden');
+
+    document.getElementById('login-form').reset();
+
+}
+
+
+/* =========================================================
+   PAGE ROUTING
+========================================================= */
+
+function loadPage(pageType, event) {
+
+    if (event)
         event.preventDefault();
-        const usernameInput = document.getElementById('username').value.trim();
-        currentUser = usernameInput || 'ADMIN';
 
-        document.getElementById('sidebar-username').innerText = currentUser.toUpperCase();
-        document.getElementById('sidebar-avatar').innerText = currentUser.charAt(0).toUpperCase();
+    const contentHome =
+        document.getElementById('content-home');
 
-        document.getElementById('login-container').classList.add('hidden');
-        document.getElementById('dashboard-container').classList.remove('hidden');
-        document.getElementById('dashboard-container').classList.add('flex');
+    const contentAnalytics =
+        document.getElementById('content-analytics');
 
-        startLiveClock();
-        loadPage('home');
-    }
+    const contentEmployees =
+        document.getElementById('content-employees');
 
-    function handleLogout() {
-        currentUser = null;
-        if (clockInterval) clearInterval(clockInterval);
-        document.getElementById('dashboard-container').classList.add('hidden');
-        document.getElementById('dashboard-container').classList.remove('flex');
-        document.getElementById('login-container').classList.remove('flex');
-        document.getElementById('login-container').classList.remove('hidden');
-        document.getElementById('username').value = '';
-        document.getElementById('password').value = '';
-    }
+    const contentSettings =
+        document.getElementById('content-settings');
 
-    function startLiveClock() {
-        updateClock();
-        clockInterval = setInterval(updateClock, 1000);
-    }
+    const pageTitle =
+        document.getElementById('page-title');
 
-    function updateClock() {
-        const now = new Date();
-        const timeString = now.toLocaleTimeString();
-        const dateString = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    contentHome.classList.add('hidden');
+    contentAnalytics.classList.add('hidden');
+    contentEmployees.classList.add('hidden');
+    contentSettings.classList.add('hidden');
 
-        const timeElem = document.getElementById('live-time');
-        const dateElem = document.getElementById('live-date');
-        if (timeElem) timeElem.innerText = timeString;
-        if (dateElem) dateElem.innerText = dateString;
+    document.querySelectorAll('aside nav a')
+        .forEach(el => {
 
-        // Also update MIS clocks if present
-        const misTime = document.getElementById('mis-clock-time');
-        const misDate = document.getElementById('mis-clock-date');
-        if (misTime) misTime.innerText = timeString;
-        if (misDate) misDate.innerText = dateString;
-    }
+            el.classList.remove(
+                'bg-indigo-50',
+                'text-indigo-600',
+                'font-medium'
+            );
 
-    function loadPage(pageKey, event) {
-        if (event) event.preventDefault();
+            el.classList.add(
+                'hover:bg-slate-50',
+                'text-slate-600'
+            );
 
-        // Update active sidebar styles
-        const navLinks = document.querySelectorAll('aside nav a');
-        navLinks.forEach(link => {
-            link.classList.remove('bg-indigo-50', 'text-indigo-600', 'font-medium');
-            link.classList.add('text-slate-600');
         });
 
-        if (event && event.currentTarget) {
-            event.currentTarget.classList.add('bg-indigo-50', 'text-indigo-600', 'font-medium');
-            event.currentTarget.classList.remove('text-slate-600');
-        }
+    if (event && event.currentTarget) {
 
-        // Hide all page contents
-        document.getElementById('content-home').classList.add('hidden');
-        document.getElementById('content-analytics').classList.add('hidden');
+        event.currentTarget.classList.add(
+            'bg-indigo-50',
+            'text-indigo-600',
+            'font-medium'
+        );
 
-        const titleElem = document.getElementById('page-title');
+        event.currentTarget.classList.remove(
+            'hover:bg-slate-50',
+            'text-slate-600'
+        );
 
-        if (pageKey === 'home') {
-            document.getElementById('content-home').classList.remove('hidden');
-            if (titleElem) titleElem.innerText = 'Dashboard Home';
-        } else if (pageKey === 'analytics') {
-            document.getElementById('content-analytics').classList.remove('hidden');
-            if (titleElem) titleElem.innerText = 'Analytics Report';
-            // Default load report view 1
-            handleAnalyticsBtn(1);
-        } else if (pageKey === 'employees') {
-            if (titleElem) titleElem.innerText = 'Employee Directory';
-            loadEmployeeDirectoryView();
-        } else if (pageKey === 'settings') {
-            if (titleElem) titleElem.innerText = 'Settings';
-            loadSettingsView();
-        }
     }
 
-    function loadEmployeeDirectoryView() {
-        document.getElementById('content-analytics').classList.remove('hidden');
-        document.getElementById('analytics-display-content').innerHTML = `
-            <div class="p-6">
-                <h3 class="text-sm font-bold text-slate-800 mb-4"><i class="fa-solid fa-users mr-2"></i> Employee Directory</h3>
-                <div class="emp-table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Department</th>
-                                <th>Role</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>EMP001</td>
-                                <td>John Doe</td>
-                                <td>Engineering</td>
-                                <td>Senior Developer</td>
-                                <td><span class="text-emerald-600 font-bold">Active</span></td>
-                            </tr>
-                            <tr>
-                                <td>EMP002</td>
-                                <td>Jane Smith</td>
-                                <td>Analytics</td>
-                                <td>Data Scientist</td>
-                                <td><span class="text-emerald-600 font-bold">Active</span></td>
-                            </tr>
-                            <tr>
-                                <td>EMP003</td>
-                                <td>Robert Johnson</td>
-                                <td>Operations</td>
-                                <td>Manager</td>
-                                <td><span class="text-amber-600 font-bold">On Leave</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+    if (pageType === 'home') {
+
+        pageTitle.textContent =
+            'Dashboard Home';
+
+        contentHome.classList.remove('hidden');
+
+    }
+
+    else if (pageType === 'analytics') {
+
+        pageTitle.textContent =
+            'Analytics Report';
+
+        contentAnalytics.classList.remove('hidden');
+
+    }
+
+    else if (pageType === 'employees') {
+
+        pageTitle.textContent =
+            'Employee Directory';
+
+        contentEmployees.classList.remove('hidden');
+
+    }
+
+    else if (pageType === 'settings') {
+
+        pageTitle.textContent =
+            'Settings';
+
+        contentSettings.classList.remove('hidden');
+
+    }
+
+}
+
+
+/* =========================================================
+   ANALYTICS BUTTONS
+========================================================= */
+
+function handleAnalyticsBtn(btnNumber, event) {
+
+    document.querySelectorAll('.analytics-btn')
+        .forEach(btn => {
+
+            btn.classList.remove(
+                'bg-indigo-50',
+                'text-indigo-600'
+            );
+
+            btn.classList.add(
+                'text-slate-600',
+                'hover:bg-slate-50'
+            );
+
+        });
+
+    if (event && event.currentTarget) {
+
+        event.currentTarget.classList.add(
+            'bg-indigo-50',
+            'text-indigo-600'
+        );
+
+        event.currentTarget.classList.remove(
+            'text-slate-600',
+            'hover:bg-slate-50'
+        );
+
+    }
+
+
+    const displayContent =
+        document.getElementById(
+            'analytics-display-content'
+        );
+
+
+    /*
+       BUTTON 1 = CD RECOVERY
+    */
+
+    if (btnNumber === 1) {
+
+        loadCDRecoveryDashboard();
+
+        return;
+
+    }
+
+
+    /*
+       BUTTON 2 = REPORT FORMAT
+    */
+
+    if (btnNumber === 2) {
+
+        loadReportFormatDownloads();
+
+        return;
+
+    }
+
+
+    /*
+       BUTTONS 3-5
+    */
+
+    displayContent.innerHTML = `
+
+        <div class="h-full flex items-center justify-center">
+
+            <div class="text-center">
+
+                <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3">
+
+                    <i class="fa-solid fa-square-${btnNumber}"></i>
+
                 </div>
+
+                <h3 class="text-base font-bold text-slate-800">
+                    Button ${btnNumber} Selected
+                </h3>
+
+                <p class="text-xs text-slate-400 mt-1">
+                    Displaying tailored analytics data for Button ${btnNumber}.
+                </p>
+
             </div>
-        `;
-    }
 
-    function loadSettingsView() {
-        document.getElementById('content-analytics').classList.remove('hidden');
-        document.getElementById('analytics-display-content').innerHTML = `
-            <div class="p-6 max-w-lg">
-                <h3 class="text-sm font-bold text-slate-800 mb-4"><i class="fa-solid fa-gear mr-2"></i> System Settings</h3>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1">Company Name</label>
-                        <input type="text" value="AI Office & Enterprise" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1">Notification Email</label>
-                        <input type="email" value="admin@aioffice.com" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs">
-                    </div>
-                    <button class="bg-indigo-600 text-white px-4 py-2 rounded-xl text-xs font-semibold shadow-md cursor-pointer">Save Changes</button>
-                </div>
+        </div>
+
+    `;
+
+}
+
+
+
+/* =========================================================
+   REPORT FORMAT DOWNLOADS - ADDED ONLY
+========================================================= */
+
+function loadReportFormatDownloads() {
+
+    const displayContent =
+        document.getElementById(
+            'analytics-display-content'
+        );
+
+    displayContent.innerHTML = `
+
+        <div class="report-format-wrapper">
+
+            <div class="report-format-header">
+
+                <h2>
+                    📥 REPORT FORMAT DOWNLOADS
+                </h2>
+
+                <p>
+                    Download the required Excel report templates.
+                </p>
+
             </div>
-        `;
-    }
 
-    function handleAnalyticsDropdown(viewId) {
-        handleAnalyticsBtn(Number(viewId));
-    }
+            <div class="report-format-grid">
 
-    function handleAnalyticsBtn(viewId, event) {
-        if (event) event.preventDefault();
+                <!-- MIS REPORT -->
+                <div class="report-format-card">
 
-        // Sync dropdown selector value
-        const dropdownSelector = document.getElementById('analytics-dropdown-selector');
-        if (dropdownSelector) dropdownSelector.value = viewId;
+                    <h3>
+                        📥 OVERALL PRODUCT DAILY MIS REPORT FILE FORMAT
+                    </h3>
 
-        const container = document.getElementById('analytics-display-content');
+                    <button class="report-format-download-btn"
+                            onclick="downloadMISReport()">
+                        Download Excel
+                    </button>
 
-        if (viewId === 1) {
-            container.innerHTML = `
-                <div id="cdRecoveryApp">
-                    <div class="mis-wrapper">
-                        <!-- Top Header -->
-                        <div class="mis-top-header">
-                            <div class="mis-brand-section">
-                                <div class="mis-brand-logo">
-                                    <i class="fa-solid fa-chart-pie"></i>
-                                </div>
-                                <div class="mis-brand-title">
-                                    <h1>CD Recovery MIS Dashboard</h1>
-                                    <p>Advanced Analytics & Recovery Tracking Portal</p>
-                                </div>
-                            </div>
-                            <div class="mis-system-clock">
-                                <div id="mis-clock-time" class="time">00:00:00 AM</div>
-                                <div id="mis-clock-date" class="date">Loading date...</div>
-                            </div>
-                        </div>
-
-                        <!-- Control Hub -->
-                        <div class="mis-control-hub">
-                            <div class="mis-uploader-group">
-                                <label for="cdExcelFile" class="mis-file-drop-label">
-                                    <i class="fa-solid fa-file-excel"></i> Upload Excel Data
-                                </label>
-                                <input type="file" id="cdExcelFile" accept=".xlsx, .xls, .csv" onchange="handleCdExcelUpload(event)">
-                                <span id="cdFileStatus" class="mis-file-status">No file uploaded (Using Demo Data)</span>
-                            </div>
-                            <div class="mis-action-buttons">
-                                <button class="mis-btn mis-btn-export" onclick="exportCdReport()">
-                                    <i class="fa-solid fa-file-excel"></i> Export Report
-                                </button>
-                                <button class="mis-btn mis-btn-template" onclick="downloadCdTemplate()">
-                                    <i class="fa-solid fa-download"></i> Template
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- KPI Grid -->
-                        <div class="mis-kpi-grid">
-                            <div class="mis-kpi-card">
-                                <div class="mis-kpi-title">Total Target</div>
-                                <div id="kpiTarget" class="mis-kpi-value mis-val-indigo">₹0</div>
-                                <div class="mis-kpi-sub">Assigned Target</div>
-                            </div>
-                            <div class="mis-kpi-card">
-                                <div class="mis-kpi-title">Total Recovery</div>
-                                <div id="kpiRecovery" class="mis-kpi-value mis-val-emerald">₹0</div>
-                                <div class="mis-kpi-sub">Realized Amount</div>
-                            </div>
-                            <div class="mis-kpi-card">
-                                <div class="mis-kpi-title">Achievement %</div>
-                                <div id="kpiAchievement" class="mis-kpi-value mis-val-cyan">0%</div>
-                                <div class="mis-kpi-sub">Overall Rate</div>
-                            </div>
-                            <div class="mis-kpi-card">
-                                <div class="mis-kpi-title">Total Accounts</div>
-                                <div id="kpiAccounts" class="mis-kpi-value mis-val-violet">0</div>
-                                <div class="mis-kpi-sub">Active Files</div>
-                            </div>
-                            <div class="mis-kpi-card">
-                                <div class="mis-kpi-title">Open Balance</div>
-                                <div id="kpiBalance" class="mis-kpi-value mis-val-amber">₹0</div>
-                                <div class="mis-kpi-sub">Outstanding</div>
-                            </div>
-                            <div class="mis-kpi-card">
-                                <div class="mis-kpi-title">Top Performer</div>
-                                <div id="kpiTopPerformer" class="mis-kpi-value mis-val-emerald" style="font-size:12px;">N/A</div>
-                                <div class="mis-kpi-sub">Max Recovery</div>
-                            </div>
-                            <div class="mis-kpi-card">
-                                <div class="mis-kpi-title">Avg Efficiency</div>
-                                <div id="kpiEfficiency" class="mis-kpi-value mis-val-cyan">0%</div>
-                                <div class="mis-kpi-sub">Team Average</div>
-                            </div>
-                        </div>
-
-                        <!-- Analytics Grid Charts -->
-                        <div class="mis-analytics-grid">
-                            <div class="mis-panel">
-                                <div class="mis-panel-header">
-                                    <div class="mis-panel-title">
-                                        <i class="fa-solid fa-chart-column text-indigo-600"></i> Recovery vs Target by Zone
-                                    </div>
-                                </div>
-                                <div class="mis-chart-wrapper">
-                                    <canvas id="zoneChart"></canvas>
-                                </div>
-                            </div>
-                            <div class="mis-panel">
-                                <div class="mis-panel-header">
-                                    <div class="mis-panel-title">
-                                        <i class="fa-solid fa-chart-pie text-indigo-600"></i> Recovery Status Breakdown
-                                    </div>
-                                </div>
-                                <div class="mis-chart-wrapper">
-                                    <canvas id="statusChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Data Table Section -->
-                        <div class="mis-table-container">
-                            <div class="mis-table-top-bar">
-                                <h2>Recovery Performance Records</h2>
-                                <span id="misRowCounter" class="mis-row-counter">Showing 0 records</span>
-                            </div>
-                            <div class="mis-filter-area">
-                                <div class="mis-filter-hub">
-                                    <input type="text" id="misSearchInput" class="mis-search-input" placeholder="Search by name, zone, or account..." onkeyup="filterCdTable()">
-                                    <select id="misZoneFilter" class="mis-select-dropdown" onchange="filterCdTable()">
-                                        <option value="">All Zones</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="mis-table-scroll">
-                                <table class="mis-data-table">
-                                    <thead>
-                                        <tr>
-                                            <th>RANK</th>
-                                            <th>EMPLOYEE / AGENT</th>
-                                            <th>ZONE</th>
-                                            <th>TOTAL ACCOUNTS</th>
-                                            <th>TARGET AMOUNT</th>
-                                            <th>RECOVERED AMOUNT</th>
-                                            <th>BALANCE AMOUNT</th>
-                                            <th>ACHIEVEMENT %</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="cdTableBody">
-                                        <!-- Dynamically Populated -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <div class="mis-footer-credit">
-                            AI Enterprise Office MIS & Analytics Platform &bull; Secure Data Engine
-                        </div>
+                    <div id="statusMIS"
+                         class="report-format-status">
                     </div>
+
                 </div>
-            `;
-            initCdRecoveryDashboard();
-        } else if (viewId === 2) {
-            container.innerHTML = `
-                <div class="report-format-wrapper">
-                    <div class="report-format-header">
-                        <h2>Report Format Downloads</h2>
-                        <p>Generate and download verified Excel & structured operational reports instantly.</p>
+
+                <!-- EMP REPORT -->
+                <div class="report-format-card">
+
+                    <h3>
+                        📥 EMP TARGET ACHIEVED / NOT ACHIEVED REPORT FILE FORMAT
+                    </h3>
+
+                    <button class="report-format-download-btn"
+                            onclick="downloadEMPReport()">
+                        Download Excel
+                    </button>
+
+                    <div id="statusEMP"
+                         class="report-format-status">
                     </div>
-                    <div class="report-format-grid">
-                        <div class="report-format-card">
-                            <h3>Executive Summary Report (.xlsx)</h3>
-                            <button class="report-format-download-btn" onclick="downloadReportFormat('executive')">
-                                <i class="fa-solid fa-download mr-2"></i> Download Executive Report
-                            </button>
-                            <div id="status-executive" class="report-format-status"></div>
-                        </div>
-                        <div class="report-format-card">
-                            <h3>Detailed Analytics Report (.xlsx)</h3>
-                            <button class="report-format-download-btn" onclick="downloadReportFormat('detailed')">
-                                <i class="fa-solid fa-download mr-2"></i> Download Detailed Report
-                            </button>
-                            <div id="status-detailed" class="report-format-status"></div>
-                        </div>
-                    </div>
+
                 </div>
-            `;
-        } else {
-            container.innerHTML = `
-                <div class="p-12 text-center">
-                    <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3">
-                        <i class="fa-solid fa-file-lines"></i>
+
+                <!-- DAILY CALLING REPORT -->
+                <div class="report-format-card">
+
+                    <h3>
+                        📥 DAILY EMP CALLING REPORT FILE FORMAT
+                    </h3>
+
+                    <button class="report-format-download-btn"
+                            onclick="downloadAIDailyReport()">
+                        Download Excel
+                    </button>
+
+                    <div id="statusAI"
+                         class="report-format-status">
                     </div>
-                    <h3 class="text-sm font-bold text-slate-800">Report View ${viewId}</h3>
-                    <p class="text-xs text-slate-500 mt-1">Custom analytics and reporting module view ${viewId} is fully operational.</p>
+
                 </div>
-            `;
-        }
-    }
+
+                <!-- PAYMENT FORMAT -->
+                <div class="report-format-card">
+
+                    <h3>
+                        📥 PAYMENT FILE FORMAT
+                    </h3>
+
+                    <button class="report-format-download-btn"
+                            onclick="downloadPaymentFormat()">
+                        Download Excel
+                    </button>
+
+                    <div id="statusPAY"
+                         class="report-format-status">
+                    </div>
+
+                </div>
+
+                <!-- FEEDBACK FORMAT -->
+                <div class="report-format-card">
+
+                    <h3>
+                        📥 FEEDBACK FILE FORMAT
+                    </h3>
+
+                    <button class="report-format-download-btn"
+                            onclick="downloadFeedbackFormat()">
+                        Download Excel
+                    </button>
+
+                    <div id="statusFB"
+                         class="report-format-status">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
 
 
-    /* =========================================================
-       CD RECOVERY DASHBOARD SCRIPT LOGIC
-    ========================================================= */
-    let cdMasterData = [];
-    let cdFilteredData = [];
-    let zoneChartInstance = null;
-    let statusChartInstance = null;
+/* =========================================================
+   MIS REPORT DOWNLOAD
+========================================================= */
 
-    function initCdRecoveryDashboard() {
-        cdMasterData = generateDemoCdData();
-        cdFilteredData = [...cdMasterData];
-        populateCdZones();
-        renderCdDashboard();
-    }
+async function downloadMISReport() {
 
-    function generateDemoCdData() {
-        const names = [
-            "Rajesh Kumar", "Priya Sharma", "Anitha Ramesh", "Karthik Raja",
-            "Deepak Verma", "Sangeeta Nair", "Vijay Anand", "Divya Menon",
-            "Manoj Prabhakar", "Swetha Suresh", "Arun Kumar", "Lakshmi Priya"
-        ];
-        const zones = ["North Zone", "South Zone", "East Zone", "West Zone", "Central Zone"];
-        let data = [];
-        for (let i = 0; i < names.length; i++) {
-            let target = Math.floor(Math.random() * 500000) + 200000;
-            let recovery = Math.floor(target * (Math.random() * 0.5 + 0.5));
-            let balance = target - recovery;
-            data.push({
-                id: i + 1,
-                name: names[i],
-                zone: zones[i % zones.length],
-                accounts: Math.floor(Math.random() * 40) + 10,
-                target: target,
-                recovery: recovery,
-                balance: balance,
-                achievement: parseFloat(((recovery / target) * 100).toFixed(1))
-            });
-        }
-        return data;
-    }
+    const status =
+        document.getElementById('statusMIS');
 
-    function handleCdExcelUpload(event) {
-        const file = event.target.files[0];
-        if (!file) return;
-        document.getElementById('cdFileStatus').innerText = `Loaded: ${file.name}`;
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            try {
-                const data = new Uint8Array(e.target.result);
-                const workbook = XLSX.read(data, { type: 'array' });
-                const firstSheetName = workbook.SheetNames[0];
-                const worksheet = workbook.Sheets[firstSheetName];
-                const json = XLSX.utils.sheet_to_json(worksheet);
-                if (json && json.length > 0) {
-                    cdMasterData = json.map((row, idx) => ({
-                        id: idx + 1,
-                        name: row['Employee'] || row['Name'] || `Agent ${idx+1}`,
-                        zone: row['Zone'] || 'General',
-                        accounts: Number(row['Accounts'] || row['Total Accounts'] || 20),
-                        target: Number(row['Target'] || row['Target Amount'] || 300000),
-                        recovery: Number(row['Recovery'] || row['Recovered Amount'] || 200000),
-                        balance: Number(row['Balance'] || 100000),
-                        achievement: Number(row['Achievement %'] || 75.0)
-                    }));
-                    cdFilteredData = [...cdMasterData];
-                    populateCdZones();
-                    renderCdDashboard();
+    status.textContent =
+        "Preparing MIS report...";
+
+    status.className =
+        "report-format-status loading";
+
+    try {
+
+        const wb =
+            new ExcelJS.Workbook();
+
+        const ws =
+            wb.addWorksheet("MIS Report");
+
+        ws.addRow([
+            "PM Name","Product","Bucket","EMP NO","Allocation","","Target",
+            "Paid","","","Yet To Go","DRR","","Movement","",""
+        ]);
+
+        ws.addRow([
+            "","","","TC+FOS #","Count #","Stock $","",
+            "Count #","Stock $","%","","Drr %","Value $",
+            "Count #","Stock $","%"
+        ]);
+
+        ws.mergeCells("A1:A2");
+        ws.mergeCells("B1:B2");
+        ws.mergeCells("C1:C2");
+        ws.mergeCells("D1:D2");
+        ws.mergeCells("E1:F1");
+        ws.mergeCells("H1:J1");
+        ws.mergeCells("L1:M1");
+        ws.mergeCells("N1:P1");
+        ws.mergeCells("G1:G2");
+        ws.mergeCells("K1:K2");
+
+        ws.addRow([
+            "HARIKARAN","HDFC CD","1 TO 5","3+6",1493,13204248,"75%",
+            213,1323112,"10%","65%","4%",572005,5,2143423,"2%"
+        ]);
+
+        ws.addRow([
+            "","HDFC CD","WOFF","3+0",2312,24134332,1000000,
+            312,500000,"50%",500000,"3%",16667,3,100000,"1%"
+        ]);
+
+        ws.eachRow((row,rowNumber)=>{
+
+            row.eachCell((cell,colNumber)=>{
+
+                cell.border = {
+                    top:{style:'thin'},
+                    left:{style:'thin'},
+                    bottom:{style:'thin'},
+                    right:{style:'thin'}
+                };
+
+                if(rowNumber <= 2){
+
+                    cell.fill = {
+                        type:'pattern',
+                        pattern:'solid',
+                        fgColor:{argb:'FFD9D9D9'}
+                    };
+
+                    cell.font = {
+                        bold:true
+                    };
+
+                    cell.alignment = {
+                        vertical:'middle',
+                        horizontal:'center'
+                    };
+
                 }
-            } catch (err) {
-                console.error(err);
-            }
+
+                if(colNumber===7){
+
+                    cell.fill = {
+                        type:'pattern',
+                        pattern:'solid',
+                        fgColor:{argb:'FFFFFF00'}
+                    };
+
+                    cell.font = {
+                        bold:true
+                    };
+
+                }
+
+            });
+
+        });
+
+        ws.columns.forEach(
+            col => col.width = 15
+        );
+
+        const buffer =
+            await wb.xlsx.writeBuffer();
+
+        saveAs(
+            new Blob([buffer]),
+            "MIS_Perfect_Report.xlsx"
+        );
+
+        status.textContent =
+            "MIS Download successful! ✅";
+
+        status.classList.add("success");
+
+    } catch(err) {
+
+        console.error(err);
+
+        status.textContent =
+            "MIS Download failed! ❌";
+
+        status.classList.add("error");
+
+    }
+
+}
+
+
+/* =========================================================
+   EMP REPORT DOWNLOAD
+========================================================= */
+
+async function downloadEMPReport() {
+
+    const status =
+        document.getElementById('statusEMP');
+
+    status.textContent =
+        "Preparing EMP report...";
+
+    status.className =
+        "report-format-status loading";
+
+    try {
+
+        const wb =
+            new ExcelJS.Workbook();
+
+        const ws =
+            wb.addWorksheet("EMP Report");
+
+        ws.mergeCells("A1:M1");
+
+        const titleCell =
+            ws.getCell("A1");
+
+        titleCell.value =
+            "EMP TARGET ACHIEVED / NOT ACHIEVED REPORT";
+
+        titleCell.font = {
+            size:16,
+            bold:true
         };
-        reader.readAsArrayBuffer(file);
-    }
 
-    function populateCdZones() {
-        const zoneSet = new Set(cdMasterData.map(d => d.zone));
-        const select = document.getElementById('misZoneFilter');
-        if (!select) return;
-        select.innerHTML = '<option value="">All Zones</option>';
-        zoneSet.forEach(zone => {
-            select.innerHTML += `<option value="${zone}">${zone}</option>`;
-        });
-    }
+        titleCell.alignment = {
+            horizontal:"center",
+            vertical:"middle"
+        };
 
-    function filterCdTable() {
-        const query = document.getElementById('misSearchInput').value.toLowerCase();
-        const zoneVal = document.getElementById('misZoneFilter').value;
+        ws.addRow([]);
 
-        cdFilteredData = cdMasterData.filter(item => {
-            const matchesQuery = item.name.toLowerCase().includes(query) || item.zone.toLowerCase().includes(query);
-            const matchesZone = zoneVal === "" || item.zone === zoneVal;
-            return matchesQuery && matchesZone;
-        });
-        renderCdTableRows();
-    }
+        ws.addRow([
+            "Sl No","M & Y","Biometric Code","Employee Name","DOJ",
+            "Dept Name","Process Name","Process Manager",
+            "Allocation","Target","Collected Amount","Achieved %","STATUS"
+        ]);
 
-    function renderCdDashboard() {
-        // Sort descending by recovery
-        cdMasterData.sort((a, b) => b.recovery - a.recovery);
-        cdFilteredData = [...cdMasterData];
+        const data = [
 
-        let totalTarget = cdMasterData.reduce((sum, item) => sum + item.target, 0);
-        let totalRecovery = cdMasterData.reduce((sum, item) => sum + item.recovery, 0);
-        let totalAccounts = cdMasterData.reduce((sum, item) => sum + item.accounts, 0);
-        let totalBalance = cdMasterData.reduce((sum, item) => sum + item.balance, 0);
-        let overallAch = totalTarget > 0 ? ((totalRecovery / totalTarget) * 100).toFixed(1) : 0;
-        let topPerformer = cdMasterData.length > 0 ? cdMasterData[0].name : 'N/A';
-        let avgEff = cdMasterData.length > 0 ? (cdMasterData.reduce((sum, item) => sum + item.achievement, 0) / cdMasterData.length).toFixed(1) : 0;
+            [
+                1,"MAR'26","XXXXX","HARIKARAN M","11-Mar-08",
+                "HDFC","HDFC CD COLLECTIONS","HARIKARAN M",
+                10984,"70%",1000000,"75%","Achieved"
+            ],
 
-        document.getElementById('kpiTarget').innerText = `₹${totalTarget.toLocaleString()}`;
-        document.getElementById('kpiRecovery').innerText = `₹${totalRecovery.toLocaleString()}`;
-        document.getElementById('kpiAchievement').innerText = `${overallAch}%`;
-        document.getElementById('kpiAccounts').innerText = totalAccounts;
-        document.getElementById('kpiBalance').innerText = `₹${totalBalance.toLocaleString()}`;
-        document.getElementById('kpiTopPerformer').innerText = topPerformer;
-        document.getElementById('kpiEfficiency').innerText = `${avgEff}%`;
+            [
+                2,"MAR'26","XXXXX","HARIKARAN M","11-Mar-08",
+                "HDFC","HDFC CD RECOVERY COLLECTIONS","HARIKARAN M",
+                3214,1000000,500000,"50%","Not Achieved"
+            ]
 
-        renderCdTableRows();
-        renderCdCharts();
-    }
-
-    function renderCdTableRows() {
-        const tbody = document.getElementById('cdTableBody');
-        const counter = document.getElementById('misRowCounter');
-        if (!tbody) return;
-
-        tbody.innerHTML = '';
-        counter.innerText = `Showing ${cdFilteredData.length} records`;
-
-        if (cdFilteredData.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="8" class="mis-empty-view"><div class="icon"><i class="fa-solid fa-folder-open"></i></div><p>No matching recovery records found.</p></td></tr>`;
-            return;
-        }
-
-        cdFilteredData.forEach((item, index) => {
-            let rankClass = index === 0 ? 'mis-rank-1' : index === 1 ? 'mis-rank-2' : index === 2 ? 'mis-rank-3' : '';
-            let initials = item.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
-
-            tbody.innerHTML += `
-                <tr>
-                    <td><span class="mis-rank-badge ${rankClass}">#${index + 1}</span></td>
-                    <td>
-                        <div class="mis-employee-cell">
-                            <div class="mis-employee-avatar">${initials}</div>
-                            <span class="mis-employee-name">${item.name}</span>
-                        </div>
-                    </td>
-                    <td>${item.zone}</td>
-                    <td class="mis-tabular-data">${item.accounts}</td>
-                    <td class="mis-tabular-data">₹${item.target.toLocaleString()}</td>
-                    <td class="mis-tabular-data mis-val-emerald">₹${item.recovery.toLocaleString()}</td>
-                    <td class="mis-tabular-data mis-val-amber">₹${item.balance.toLocaleString()}</td>
-                    <td>
-                        <span class="mis-tabular-data">${item.achievement}%</span>
-                        <div class="mis-progress-container">
-                            <div class="mis-progress-fill" style="width: ${Math.min(item.achievement, 100)}%;"></div>
-                        </div>
-                    </td>
-                </tr>
-            `;
-        });
-    }
-
-    function renderCdCharts() {
-        const zoneCtx = document.getElementById('zoneChart');
-        const statusCtx = document.getElementById('statusChart');
-        if (!zoneCtx || !statusCtx) return;
-
-        if (zoneChartInstance) zoneChartInstance.destroy();
-        if (statusChartInstance) statusChartInstance.destroy();
-
-        // Zone Chart
-        const zoneMap = {};
-        cdMasterData.forEach(item => {
-            if (!zoneMap[item.zone]) zoneMap[item.zone] = { target: 0, recovery: 0 };
-            zoneMap[item.zone].target += item.target;
-            zoneMap[item.zone].recovery += item.recovery;
-        });
-
-        const zones = Object.keys(zoneMap);
-        const targets = zones.map(z => zoneMap[z].target);
-        const recoveries = zones.map(z => zoneMap[z].recovery);
-
-        zoneChartInstance = new Chart(zoneCtx, {
-            type: 'bar',
-            data: {
-                labels: zones,
-                datasets: [
-                    { label: 'Target', data: targets, backgroundColor: '#6366f1', borderRadius: 6 },
-                    { label: 'Recovery', data: recoveries, backgroundColor: '#10b981', borderRadius: 6 }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } } },
-                scales: { y: { beginAtZero: true, grid: { color: '#f1f5f9' } }, x: { grid: { display: false } } }
-            }
-        });
-
-        // Status Chart (Pie)
-        let totalRec = recoveries.reduce((a,b) => a+b, 0);
-        let totalBal = cdMasterData.reduce((a,b) => a+b.balance, 0);
-
-        statusChartInstance = new Chart(statusCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Recovered', 'Outstanding Balance'],
-                datasets: [{
-                    data: [totalRec, totalBal],
-                    backgroundColor: ['#10b981', '#f59e0b'],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } } }
-            }
-        });
-    }
-
-    function exportCdReport() {
-        const ws = XLSX.utils.json_to_sheet(cdMasterData);
-        const wb = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(wb, ws, "CD_Recovery_Report");
-        XLSX.writeFile(wb, "CD_Recovery_MIS_Report.xlsx");
-    }
-
-    function downloadCdTemplate() {
-        const templateData = [
-            { Employee: "John Doe", Zone: "North Zone", Accounts: 20, Target: 400000, Recovery: 300000, Balance: 100000, "Achievement %": 75.0 },
-            { Employee: "Jane Smith", Zone: "South Zone", Accounts: 25, Target: 500000, Recovery: 450000, Balance: 50000, "Achievement %": 90.0 }
         ];
-        const ws = XLSX.utils.json_to_sheet(templateData);
-        const wb = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(wb, ws, "Template");
-        XLSX.writeFile(wb, "CD_Recovery_Template.xlsx");
+
+        data.forEach(
+            r => ws.addRow(r)
+        );
+
+        ws.eachRow((row,rowNumber)=>{
+
+            row.eachCell((cell,colNumber)=>{
+
+                cell.border = {
+                    top:{style:'thin'},
+                    left:{style:'thin'},
+                    bottom:{style:'thin'},
+                    right:{style:'thin'}
+                };
+
+                if(rowNumber===3){
+
+                    cell.fill = {
+                        type:'pattern',
+                        pattern:'solid',
+                        fgColor:{argb:'FFB7D7A8'}
+                    };
+
+                    cell.font = {
+                        bold:true
+                    };
+
+                    cell.alignment = {
+                        horizontal:"center"
+                    };
+
+                }
+
+                if(
+                    colNumber===13 &&
+                    rowNumber>3
+                ){
+
+                    cell.font = {
+                        bold:true,
+                        color:{
+                            argb:
+                                cell.value==="Achieved"
+                                ? 'FF008000'
+                                : 'FFFF0000'
+                        }
+                    };
+
+                }
+
+                cell.alignment = {
+                    vertical:'middle',
+                    horizontal:'center'
+                };
+
+            });
+
+        });
+
+        ws.columns = [
+
+            {width:8},
+            {width:10},
+            {width:18},
+            {width:20},
+            {width:15},
+            {width:15},
+            {width:30},
+            {width:20},
+            {width:12},
+            {width:12},
+            {width:18},
+            {width:12},
+            {width:15}
+
+        ];
+
+        const buffer =
+            await wb.xlsx.writeBuffer();
+
+        saveAs(
+            new Blob([buffer]),
+            "EMP_Target_Report.xlsx"
+        );
+
+        status.textContent =
+            "EMP Download successful! ✅";
+
+        status.classList.add("success");
+
+    } catch(err) {
+
+        console.error(err);
+
+        status.textContent =
+            "EMP Download failed! ❌";
+
+        status.classList.add("error");
+
     }
 
+}
 
-    /* =========================================================
-       REPORT FORMAT DOWNLOAD EXCELJS & FILE SAVER
-    ========================================================= */
-    async function downloadReportFormat(type) {
-        const statusEl = document.getElementById(`status-${type}`);
-        statusEl.className = "report-format-status loading";
-        statusEl.innerText = "Generating professional Excel report...";
+
+/* =========================================================
+   AI DAILY EMP CALLING REPORT DOWNLOAD WITH R-CODES SHEET
+========================================================= */
+
+async function downloadAIDailyReport() {
+
+    const status =
+        document.getElementById('statusAI');
+
+    status.textContent =
+        "Preparing Daily report...";
+
+    status.className =
+        "report-format-status loading";
+
+    try {
+
+        const wb =
+            new ExcelJS.Workbook();
+
+        /* DAILY REPORT SHEET */
+
+        const wsDaily =
+            wb.addWorksheet("Daily Report");
+
+        wsDaily.addRow([
+            "Date","Product","Agent Name","Contacted","Not Contacted",
+            "Total Calls","PTP","BPTP","PAID","CBL","RNR","SWO","NC",
+            "RTP","DISP","TRACE","WRN"
+        ]);
+
+        const dataDaily = [
+
+            [
+                "04-04-2026","HDFC","Raj Kumar",
+                1,0,1,1,0,0,0,0,0,0,0,0,0,0
+            ],
+
+            [
+                "04-04-2026","AXIS","Suresh",
+                0,1,1,0,0,0,0,1,0,0,0,0,0,0
+            ],
+
+            [
+                "Total","","",
+                1,1,2,1,0,0,0,1,0,0,0,0,0,0
+            ]
+
+        ];
+
+        dataDaily.forEach(
+            r => wsDaily.addRow(r)
+        );
+
+        wsDaily.eachRow(
+            (row, rowNumber) => {
+
+                row.eachCell(
+                    (cell, colNumber) => {
+
+                        cell.border = {
+                            top:{style:'thin'},
+                            left:{style:'thin'},
+                            bottom:{style:'thin'},
+                            right:{style:'thin'}
+                        };
+
+                        if(rowNumber === 1){
+
+                            cell.fill = {
+                                type:'pattern',
+                                pattern:'solid',
+                                fgColor:{argb:'FFB7D7A8'}
+                            };
+
+                            cell.font = {
+                                bold:true
+                            };
+
+                            cell.alignment = {
+                                horizontal:"center"
+                            };
+
+                        }
+
+                        cell.alignment = {
+                            vertical:'middle',
+                            horizontal:'center'
+                        };
+
+                    }
+                );
+
+            }
+        );
+
+        wsDaily.columns =
+            Array(17).fill({width:12});
+
+
+        /* R-CODES SHEET */
+
+        const wsRCodes =
+            wb.addWorksheet("R-Codes");
+
+        wsRCodes.addRow([
+            "Code",
+            "Meaning / Status",
+            "Type",
+            "Notes / Action"
+        ]);
+
+        const rCodesData = [
+
+            [
+                "PTP",
+                "Promise to Pay",
+                "Positive",
+                "Follow-up on promised date"
+            ],
+
+            [
+                "BPTP",
+                "Broken Promise to Pay",
+                "Negative",
+                "Immediate follow-up"
+            ],
+
+            [
+                "PAID",
+                "Payment Done",
+                "Positive",
+                "Close case"
+            ],
+
+            [
+                "RNR",
+                "Ringing No Response",
+                "Negative",
+                "Retry next day"
+            ],
+
+            [
+                "NR",
+                "Not Reachable",
+                "Negative",
+                "Try alternate number"
+            ],
+
+            [
+                "SWO",
+                "Switched Off",
+                "Negative",
+                "Retry later"
+            ],
+
+            [
+                "CBL",
+                "Call Back Later",
+                "Neutral/Negative",
+                "Call at requested time"
+            ],
+
+            [
+                "RTP",
+                "Refused to Pay",
+                "Negative",
+                "Escalate or field visit"
+            ],
+
+            [
+                "DISP",
+                "Dispute / Complaint",
+                "Neutral",
+                "Send to support team"
+            ],
+
+            [
+                "TRACE",
+                "Not traceable / Field Visit",
+                "Negative",
+                "Investigation required"
+            ],
+
+            [
+                "NC",
+                "Not Contactable / Wrong Number",
+                "Negative",
+                "Mark for trace"
+            ],
+
+            [
+                "BUSY",
+                "Line Busy",
+                "Negative",
+                "Retry later"
+            ],
+
+            [
+                "ENQ",
+                "Customer Enquiry",
+                "Neutral/Positive",
+                "Provide information"
+            ],
+
+            [
+                "SHIFT",
+                "Customer Shifted",
+                "Negative",
+                "Update record"
+            ],
+
+            [
+                "LEFT JOB",
+                "Lost Income Source",
+                "Negative",
+                "Update profile"
+            ],
+
+            [
+                "DECEASED",
+                "Customer Deceased",
+                "Negative",
+                "Close account"
+            ],
+
+            [
+                "FORECLOSE",
+                "Loan Foreclosed",
+                "Positive",
+                "Close tracking"
+            ],
+
+            [
+                "SETTLE",
+                "Settlement Discussion",
+                "Neutral/Positive",
+                "Follow-up with terms"
+            ],
+
+            [
+                "WRN",
+                "Wrong Number",
+                "Negative",
+                "Correct details"
+            ]
+
+        ];
+
+        rCodesData.forEach(
+            row => wsRCodes.addRow(row)
+        );
+
+        wsRCodes.getRow(1).eachCell(
+            cell => {
+
+                cell.font = {
+                    bold: true
+                };
+
+                cell.fill = {
+                    type: 'pattern',
+                    pattern: 'solid',
+                    fgColor: {
+                        argb: 'FFB7D7A8'
+                    }
+                };
+
+                cell.alignment = {
+                    horizontal: 'center',
+                    vertical: 'middle'
+                };
+
+                cell.border = {
+                    top:{style:'thin'},
+                    left:{style:'thin'},
+                    bottom:{style:'thin'},
+                    right:{style:'thin'}
+                };
+
+            }
+        );
+
+        wsRCodes.eachRow(
+            row => {
+
+                row.eachCell(
+                    cell => {
+
+                        cell.border = {
+                            top:{style:'thin'},
+                            left:{style:'thin'},
+                            bottom:{style:'thin'},
+                            right:{style:'thin'}
+                        };
+
+                        cell.alignment = {
+                            vertical:'middle',
+                            horizontal:'left'
+                        };
+
+                    }
+                );
+
+            }
+        );
+
+        wsRCodes.columns = [
+
+            { width: 10 },
+            { width: 35 },
+            { width: 15 },
+            { width: 35 }
+
+        ];
+
+        const buffer =
+            await wb.xlsx.writeBuffer();
+
+        saveAs(
+            new Blob([buffer]),
+            "Daily_EMP_Calling_Report_With_RCodes.xlsx"
+        );
+
+        status.textContent =
+            "Daily Download successful! ✅";
+
+        status.classList.add("success");
+
+    } catch(err) {
+
+        console.error(err);
+
+        status.textContent =
+            "Daily Download failed! ❌";
+
+        status.classList.add("error");
+
+    }
+
+}
+
+
+/* =========================================================
+   PAYMENT FORMAT DOWNLOAD
+========================================================= */
+
+async function downloadPaymentFormat() {
+
+    const status =
+        document.getElementById('statusPAY');
+
+    status.textContent =
+        "Preparing file...";
+
+    status.className =
+        "report-format-status loading";
+
+    try {
+
+        const wb =
+            new ExcelJS.Workbook();
+
+        const ws =
+            wb.addWorksheet("Payment Format");
+
+        ws.addRow([
+
+            "LOAN / ACCOUNT NUMBER",
+            "CUSTOMER NAME",
+            "PRINCIPAL OUTSTANDING / POS / STOCK / TOS / CURBAL",
+            "VINTAGE / BKT / CYCLE",
+            "COLLECTED AMT",
+            "PAYMENT DATE",
+            "PAYMENT MODE",
+            "COLLECTED NAME",
+            "DESIGNATION",
+            "STATUS"
+
+        ]);
+
+        ws.addRow([
+
+            "LN001234",
+            "Ravi Kumar",
+            50000,
+            "BKT-1",
+            10000,
+            "04-04-2026",
+            "Cash",
+            "Agent A",
+            "Executive",
+            "Paid"
+
+        ]);
+
+        ws.eachRow(
+            (row, rowNumber) => {
+
+                row.eachCell(
+                    (cell) => {
+
+                        cell.border = {
+                            top:{style:'thin'},
+                            left:{style:'thin'},
+                            bottom:{style:'thin'},
+                            right:{style:'thin'}
+                        };
+
+                        if(rowNumber === 1){
+
+                            cell.fill = {
+                                type:'pattern',
+                                pattern:'solid',
+                                fgColor:{argb:'FFBBF7D0'}
+                            };
+
+                            cell.font = {
+                                bold:true
+                            };
+
+                        }
+
+                        cell.alignment = {
+                            vertical:'middle',
+                            horizontal:'center'
+                        };
+
+                    }
+                );
+
+            }
+        );
+
+        ws.columns = [
+
+            { width: 25 },
+            { width: 25 },
+            { width: 30 },
+            { width: 20 },
+            { width: 18 },
+            { width: 18 },
+            { width: 18 },
+            { width: 20 },
+            { width: 18 },
+            { width: 15 }
+
+        ];
+
+        const buffer =
+            await wb.xlsx.writeBuffer();
+
+        saveAs(
+            new Blob([buffer]),
+            "Payment_File_Format.xlsx"
+        );
+
+        status.textContent =
+            "Download successful! ✅";
+
+        status.className =
+            "report-format-status success";
+
+    } catch(err) {
+
+        console.error(err);
+
+        status.textContent =
+            "Download failed! ❌";
+
+        status.className =
+            "report-format-status error";
+
+    }
+
+}
+
+
+/* =========================================================
+   FEEDBACK FORMAT DOWNLOAD
+========================================================= */
+
+async function downloadFeedbackFormat() {
+
+    const status =
+        document.getElementById('statusFB');
+
+    status.textContent =
+        "Preparing file...";
+
+    status.className =
+        "report-format-status loading";
+
+    try {
+
+        const wb =
+            new ExcelJS.Workbook();
+
+        const ws =
+            wb.addWorksheet("Feedback Format");
+
+        ws.addRow([
+
+            "LOAN / ACCOUNT NUMBER",
+            "CUSTOMER NAME",
+            "PRINCIPAL OUTSTANDING / POS / STOCK / TOS / CURBAL",
+            "VINTAGE / BKT / CYCLE",
+            "CODE",
+            "PTP DATE",
+            "PTP AMOUNT",
+            "REMARKS"
+
+        ]);
+
+        ws.addRow([
+
+            "LN001234",
+            "Ravi Kumar",
+            50000,
+            "BKT-1",
+            "PTP",
+            "10-04-2026",
+            10000,
+            "Customer promised to pay"
+
+        ]);
+
+        ws.eachRow(
+            (row, rowNumber) => {
+
+                row.eachCell(
+                    (cell) => {
+
+                        cell.border = {
+                            top:{style:'thin'},
+                            left:{style:'thin'},
+                            bottom:{style:'thin'},
+                            right:{style:'thin'}
+                        };
+
+                        if(rowNumber === 1){
+
+                            cell.fill = {
+                                type:'pattern',
+                                pattern:'solid',
+                                fgColor:{argb:'FFBBF7D0'}
+                            };
+
+                            cell.font = {
+                                bold:true
+                            };
+
+                        }
+
+                        cell.alignment = {
+                            vertical:'middle',
+                            horizontal:'center'
+                        };
+
+                    }
+                );
+
+            }
+        );
+
+        ws.columns = [
+
+            { width: 25 },
+            { width: 25 },
+            { width: 40 },
+            { width: 20 },
+            { width: 18 },
+            { width: 18 },
+            { width: 18 },
+            { width: 30 }
+
+        ];
+
+        const buffer =
+            await wb.xlsx.writeBuffer();
+
+        saveAs(
+            new Blob([buffer]),
+            "Feedback_File_Format.xlsx"
+        );
+
+        status.textContent =
+            "Download successful! ✅";
+
+        status.className =
+            "report-format-status success";
+
+    } catch(err) {
+
+        console.error(err);
+
+        status.textContent =
+            "Download failed! ❌";
+
+        status.className =
+            "report-format-status error";
+
+    }
+
+}
+
+
+/* =========================================================
+   CD RECOVERY HTML
+========================================================= */
+
+function loadCDRecoveryDashboard() {
+
+    const displayContent =
+        document.getElementById(
+            'analytics-display-content'
+        );
+
+
+    displayContent.innerHTML = `
+
+        <div id="cdRecoveryApp">
+
+            <div class="mis-wrapper">
+
+
+                <!-- HEADER -->
+
+                <header class="mis-top-header">
+
+                    <div class="mis-brand-section">
+
+                        <div class="mis-brand-logo">
+                            AI
+                        </div>
+
+                        <div class="mis-brand-title">
+
+                            <h1>
+                                CD RECOVERY MIS
+                            </h1>
+
+                            <p>
+                                Allocation • Collection • Performance • Automated Analytics
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mis-system-clock">
+
+                        <div class="time"
+                             id="cdLiveTime">
+                            00:00:00
+                        </div>
+
+                        <div class="date"
+                             id="cdLiveDate">
+                            Initializing...
+                        </div>
+
+                    </div>
+
+                </header>
+
+
+                <!-- CONTROL HUB -->
+
+                <section class="mis-control-hub">
+
+                    <div class="mis-uploader-group">
+
+                        <label class="mis-file-drop-label"
+                               for="cdExcelFile">
+
+                            <span>
+                                📊
+                            </span>
+
+                            Upload Excel Dataset
+
+                        </label>
+
+                        <input type="file"
+                               id="cdExcelFile"
+                               accept=".xlsx,.xls,.csv">
+
+                        <span class="mis-file-status"
+                              id="cdFileNameDisplay">
+
+                            No dataset connected
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="mis-action-buttons">
+
+                        <button class="mis-btn mis-btn-export"
+                                onclick="cdExportReport()">
+
+                            ⬇ Export Report
+
+                        </button>
+
+                        <button class="mis-btn mis-btn-template"
+                                onclick="cdDownloadTemplate()">
+
+                            📄 Download Template
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- KPI -->
+
+                <section class="mis-kpi-grid">
+
+                    <div class="mis-kpi-card">
+
+                        <div class="mis-kpi-title">
+                            Active Workforce
+                        </div>
+
+                        <div class="mis-kpi-value mis-val-cyan"
+                             id="cdKpiEmployees">
+                            0
+                        </div>
+
+                        <div class="mis-kpi-sub">
+                            Total Agents Active
+                        </div>
+
+                    </div>
+
+
+                    <div class="mis-kpi-card">
+
+                        <div class="mis-kpi-title">
+                            Allocation Count
+                        </div>
+
+                        <div class="mis-kpi-value mis-val-indigo"
+                             id="cdKpiAllocation">
+                            0
+                        </div>
+
+                        <div class="mis-kpi-sub">
+                            Assigned Cases
+                        </div>
+
+                    </div>
+
+
+                    <div class="mis-kpi-card">
+
+                        <div class="mis-kpi-title">
+                            Allocation Value
+                        </div>
+
+                        <div class="mis-kpi-value"
+                             id="cdKpiAllocationValue">
+                            ₹0
+                        </div>
+
+                        <div class="mis-kpi-sub">
+                            Total Pool Value
+                        </div>
+
+                    </div>
+
+
+                    <div class="mis-kpi-card">
+
+                        <div class="mis-kpi-title">
+                            Paid Count
+                        </div>
+
+                        <div class="mis-kpi-value mis-val-emerald"
+                             id="cdKpiPaid">
+                            0
+                        </div>
+
+                        <div class="mis-kpi-sub">
+                            Successful Recoveries
+                        </div>
+
+                    </div>
+
+
+                    <div class="mis-kpi-card">
+
+                        <div class="mis-kpi-title">
+                            Paid Value
+                        </div>
+
+                        <div class="mis-kpi-value mis-val-emerald"
+                             id="cdKpiPaidValue">
+                            ₹0
+                        </div>
+
+                        <div class="mis-kpi-sub">
+                            Total Collection Amt
+                        </div>
+
+                    </div>
+
+
+                    <div class="mis-kpi-card">
+
+                        <div class="mis-kpi-title">
+                            Target Amount
+                        </div>
+
+                        <div class="mis-kpi-value mis-val-violet"
+                             id="cdKpiTargetValue">
+                            ₹0
+                        </div>
+
+                        <div class="mis-kpi-sub">
+                            Total Target Goal
+                        </div>
+
+                    </div>
+
+
+                    <div class="mis-kpi-card">
+
+                        <div class="mis-kpi-title">
+                            Achievement Ratio
+                        </div>
+
+                        <div class="mis-kpi-value mis-val-amber"
+                             id="cdKpiAchievement">
+                            0%
+                        </div>
+
+                        <div class="mis-kpi-sub">
+                            Overall Efficiency
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- CHARTS -->
+
+                <section class="mis-analytics-grid">
+
+                    <div class="mis-panel">
+
+                        <div class="mis-panel-header">
+
+                            <div class="mis-panel-title">
+
+                                📊 Top Performers Achievement (%)
+
+                            </div>
+
+                        </div>
+
+                        <div class="mis-chart-wrapper">
+
+                            <canvas id="cdBarChart"></canvas>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mis-panel">
+
+                        <div class="mis-panel-header">
+
+                            <div class="mis-panel-title">
+
+                                🟢 Collection vs Target Share
+
+                            </div>
+
+                        </div>
+
+                        <div class="mis-chart-wrapper">
+
+                            <canvas id="cdDoughnutChart"></canvas>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- TABLE -->
+
+                <section class="mis-table-container">
+
+                    <div class="mis-table-top-bar">
+
+                        <h2>
+                            🏆 Comprehensive Employee Leaderboard
+                        </h2>
+
+                        <span class="mis-row-counter"
+                              id="cdRowCountDisplay">
+
+                            0 Employees Recorded
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="mis-filter-area">
+
+                        <div class="mis-filter-hub">
+
+                            <input type="text"
+                                   class="mis-search-input"
+                                   id="cdSearchBox"
+                                   placeholder="🔍 Search employee by name..."
+                                   oninput="cdFilterAndRender()">
+
+
+                            <select class="mis-select-dropdown"
+                                    id="cdSortDropdown"
+                                    onchange="cdFilterAndRender()">
+
+                                <option value="rank">
+                                    Sort By: Rank & Achievement
+                                </option>
+
+                                <option value="allocationCount">
+                                    Sort By: Allocation Count
+                                </option>
+
+                                <option value="allocationVal">
+                                    Sort By: Allocation Value
+                                </option>
+
+                                <option value="paidCount">
+                                    Sort By: Paid Count
+                                </option>
+
+                                <option value="paidVal">
+                                    Sort By: Paid Value
+                                </option>
+
+                                <option value="achievement">
+                                    Sort By: Achievement %
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mis-table-scroll">
+
+                        <table class="mis-data-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>RANK</th>
+
+                                    <th>EMPLOYEE IDENTITY</th>
+
+                                    <th>ALLOCATION COUNT</th>
+
+                                    <th>ALLOCATION VALUE</th>
+
+                                    <th>PAID COUNT</th>
+
+                                    <th>PAID VALUE</th>
+
+                                    <th>TARGET AMOUNT</th>
+
+                                    <th>ACHIEVEMENT RATIO</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="cdTableBody"></tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <div class="mis-empty-view"
+                         id="cdEmptyStateView">
+
+                        <div class="icon">
+                            📊
+                        </div>
+
+                        <p>
+                            Upload a valid Excel spreadsheet to dynamically construct the CD Recovery MIS dashboard
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <footer class="mis-footer-credit">
+
+                    Quantum AI Executive MIS Suite •
+                    Intelligent Real-Time Aggregation & Reporting Engine
+
+                </footer>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    cdStartClock();
+
+
+    const fileInput =
+        document.getElementById('cdExcelFile');
+
+
+    fileInput.addEventListener(
+        'change',
+        cdHandleFileUpload
+    );
+
+
+    cdFilterAndRender();
+
+}
+
+
+/* =========================================================
+   CD RECOVERY DATA
+========================================================= */
+
+let cdRawDataset = [];
+let cdAggregatedData = [];
+let cdFilteredData = [];
+let cdBarChartInstance = null;
+let cdDoughnutChartInstance = null;
+
+
+/* =========================================================
+   CD CLOCK
+========================================================= */
+
+function cdStartClock() {
+
+    cdRunClock();
+
+    setInterval(cdRunClock, 1000);
+
+}
+
+
+function cdRunClock() {
+
+    const timeEl =
+        document.getElementById('cdLiveTime');
+
+    const dateEl =
+        document.getElementById('cdLiveDate');
+
+    if (!timeEl || !dateEl)
+        return;
+
+    const now = new Date();
+
+    timeEl.innerText =
+        now.toLocaleTimeString(
+            'en-IN',
+            { hour12: true }
+        );
+
+    dateEl.innerText =
+        now.toLocaleDateString(
+            'en-IN',
+            {
+                weekday: 'short',
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric'
+            }
+        );
+
+}
+
+
+/* =========================================================
+   FILE UPLOAD
+========================================================= */
+
+function cdHandleFileUpload(event) {
+
+    const file =
+        event.target.files[0];
+
+    if (!file)
+        return;
+
+    const fileDisplay =
+        document.getElementById(
+            'cdFileNameDisplay'
+        );
+
+    if (fileDisplay)
+        fileDisplay.innerText = file.name;
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload = function(event) {
 
         try {
-            const workbook = new ExcelJS.Workbook();
-            workbook.creator = 'AI Enterprise System';
-            workbook.created = new Date();
 
-            const sheet = workbook.addWorksheet(type === 'executive' ? 'Executive Summary' : 'Detailed Report');
+            const data =
+                new Uint8Array(
+                    event.target.result
+                );
 
-            // Styling Header
-            sheet.mergeCells('A1:F1');
-            const titleCell = sheet.getCell('A1');
-            titleCell.value = type === 'executive' ? 'EXECUTIVE PERFORMANCE SUMMARY REPORT' : 'DETAILED ANALYTICS RECOVERY REPORT';
-            titleCell.font = { name: 'Arial', size: 14, bold: true, color: { argb: 'FFFFFF' } };
-            titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '4F46E5' } };
-            titleCell.alignment = { horizontal: 'center', vertical: 'center' };
-            sheet.getRow(1).height = 35;
+            const workbook =
+                XLSX.read(
+                    data,
+                    { type: "array" }
+                );
 
-            // Table Headers
-            const headers = ['S.No', 'Employee Name', 'Zone', 'Accounts', 'Target (₹)', 'Recovery (₹)'];
-            sheet.addRow([]);
-            const headerRow = sheet.addRow(headers);
-            headerRow.eachCell((cell) => {
-                cell.font = { bold: true, color: { argb: 'FFFFFF' } };
-                cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '10B981' } };
-                cell.alignment = { horizontal: 'center', vertical: 'center' };
-            });
-            headerRow.height = 25;
+            const firstSheetName =
+                workbook.SheetNames[0];
 
-            // Add sample data rows
-            const sampleRows = [
-                [1, 'Rajesh Kumar', 'North Zone', 25, 450000, 380000],
-                [2, 'Priya Sharma', 'South Zone', 30, 600000, 520000],
-                [3, 'Anitha Ramesh', 'East Zone', 22, 350000, 310000],
-                [4, 'Karthik Raja', 'West Zone', 28, 500000, 460000]
-            ];
+            const worksheet =
+                workbook.Sheets[firstSheetName];
 
-            sampleRows.forEach(r => sheet.addRow(r));
+            cdRawDataset =
+                XLSX.utils.sheet_to_json(
+                    worksheet,
+                    { defval: "" }
+                );
 
-            // Auto fit column widths
-            sheet.columns.forEach(column => {
-                let maxLen = 10;
-                column.eachCell({ includeEmpty: true }, cell => {
-                    if (cell.value) {
-                        maxLen = Math.max(maxLen, cell.value.toString().length);
-                    }
-                });
-                column.width = maxLen + 4;
-            });
+            cdProcessAndAggregateData();
 
-            const buffer = await workbook.xlsx.writeBuffer();
-            const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-            saveAs(blob, `${type}_Analytics_Report.xlsx`);
-
-            statusEl.className = "report-format-status success";
-            statusEl.innerText = "Report successfully downloaded!";
-        } catch (err) {
-            console.error(err);
-            statusEl.className = "report-format-status error";
-            statusEl.innerText = "Error generating report.";
         }
+
+        catch (err) {
+
+            alert(
+                "Error parsing document: " +
+                err.message
+            );
+
+        }
+
+    };
+
+
+    reader.readAsArrayBuffer(file);
+
+}
+
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+function cdCleanKey(str) {
+
+    return String(str || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, "");
+
+}
+
+
+function cdMatchHeader(rowObj, candidates) {
+
+    const keys =
+        Object.keys(rowObj);
+
+
+    for (const cand of candidates) {
+
+        const normCand =
+            cdCleanKey(cand);
+
+        for (const k of keys) {
+
+            if (
+                cdCleanKey(k) ===
+                normCand
+            ) {
+
+                return k;
+
+            }
+
+        }
+
     }
+
+
+    for (const cand of candidates) {
+
+        const normCand =
+            cdCleanKey(cand);
+
+        for (const k of keys) {
+
+            if (
+                cdCleanKey(k)
+                .includes(normCand)
+            ) {
+
+                return k;
+
+            }
+
+        }
+
+    }
+
+    return null;
+
+}
+
+
+function cdParseVal(val) {
+
+    if (
+        val === null ||
+        val === undefined ||
+        val === ""
+    )
+        return 0;
+
+    if (typeof val === "number")
+        return val;
+
+    let clean =
+        String(val)
+        .replace(/[₹,\s]/g, "")
+        .replace(/Rs\.?/gi, "")
+        .trim();
+
+    let num =
+        parseFloat(clean);
+
+    return isNaN(num) ? 0 : num;
+
+}
+
+
+/* =========================================================
+   AGGREGATION
+========================================================= */
+
+function cdProcessAndAggregateData() {
+
+    if (!cdRawDataset.length)
+        return;
+
+    const sample =
+        cdRawDataset[0];
+
+
+    const cEmp =
+        cdMatchHeader(
+            sample,
+            [
+                "Employee Name",
+                "Employee",
+                "Agent Name",
+                "Agent",
+                "Name",
+                "EmpName"
+            ]
+        );
+
+
+    const cAllocCnt =
+        cdMatchHeader(
+            sample,
+            [
+                "Allocation Count",
+                "Allocation",
+                "Allocated Cases",
+                "Cases"
+            ]
+        );
+
+
+    const cAllocVal =
+        cdMatchHeader(
+            sample,
+            [
+                "Allocation Value",
+                "Allocation Amount",
+                "Allocated Value",
+                "Loan Amount"
+            ]
+        );
+
+
+    const cPaidCnt =
+        cdMatchHeader(
+            sample,
+            [
+                "Paid Count",
+                "Paid",
+                "Paid Cases",
+                "Collection Count"
+            ]
+        );
+
+
+    const cPaidVal =
+        cdMatchHeader(
+            sample,
+            [
+                "Paid Value",
+                "Paid Amount",
+                "Collection",
+                "Collected Amount",
+                "Collected"
+            ]
+        );
+
+
+    const cTarget =
+        cdMatchHeader(
+            sample,
+            [
+                "Target Amount",
+                "Target",
+                "Monthly Target"
+            ]
+        );
+
+
+    if (!cEmp) {
+
+        alert(
+            "Critical Error: Could not locate Employee Name column in dataset."
+        );
+
+        return;
+
+    }
+
+
+    const map = {};
+
+
+    cdRawDataset.forEach(row => {
+
+        let name =
+            String(row[cEmp] || "")
+            .trim();
+
+        if (!name)
+            return;
+
+
+        if (!map[name]) {
+
+            map[name] = {
+
+                employee: name,
+
+                allocationCount: 0,
+
+                allocationVal: 0,
+
+                paidCount: 0,
+
+                paidVal: 0,
+
+                target: 0,
+
+                achievement: 0
+
+            };
+
+        }
+
+
+        map[name].allocationCount +=
+            cAllocCnt
+                ? cdParseVal(row[cAllocCnt])
+                : 1;
+
+
+        if (cAllocVal)
+            map[name].allocationVal +=
+                cdParseVal(row[cAllocVal]);
+
+
+        if (cPaidCnt)
+            map[name].paidCount +=
+                cdParseVal(row[cPaidCnt]);
+
+
+        if (cPaidVal)
+            map[name].paidVal +=
+                cdParseVal(row[cPaidVal]);
+
+
+        if (cTarget)
+            map[name].target +=
+                cdParseVal(row[cTarget]);
+
+    });
+
+
+    cdAggregatedData =
+        Object.values(map);
+
+
+    cdAggregatedData.forEach(item => {
+
+        item.achievement =
+            item.target > 0
+                ? (item.paidVal / item.target) * 100
+                : 0;
+
+    });
+
+
+    cdSortData();
+
+    cdFilterAndRender();
+
+}
+
+
+/* =========================================================
+   SORT
+========================================================= */
+
+function cdSortData() {
+
+    const dropdown =
+        document.getElementById(
+            "cdSortDropdown"
+        );
+
+    if (!dropdown)
+        return;
+
+
+    const sortType =
+        dropdown.value;
+
+
+    cdAggregatedData.sort(
+        (a, b) => {
+
+            if (
+                sortType ===
+                "allocationCount"
+            )
+                return (
+                    b.allocationCount -
+                    a.allocationCount
+                );
+
+
+            if (
+                sortType ===
+                "allocationVal"
+            )
+                return (
+                    b.allocationVal -
+                    a.allocationVal
+                );
+
+
+            if (
+                sortType ===
+                "paidCount"
+            )
+                return (
+                    b.paidCount -
+                    a.paidCount
+                );
+
+
+            if (
+                sortType ===
+                "paidVal"
+            )
+                return (
+                    b.paidVal -
+                    a.paidVal
+                );
+
+
+            if (
+                sortType ===
+                "achievement"
+            )
+                return (
+                    b.achievement -
+                    a.achievement
+                );
+
+
+            if (
+                b.achievement !==
+                a.achievement
+            )
+                return (
+                    b.achievement -
+                    a.achievement
+                );
+
+
+            return (
+                b.paidVal -
+                a.paidVal
+            );
+
+        }
+    );
+
+
+    cdAggregatedData.forEach(
+        (item, index) => {
+
+            item.rank =
+                index + 1;
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+function cdFilterAndRender() {
+
+    const searchBox =
+        document.getElementById(
+            "cdSearchBox"
+        );
+
+
+    const query =
+        searchBox
+            ? searchBox.value.toLowerCase()
+            : "";
+
+
+    cdSortData();
+
+
+    cdFilteredData =
+        cdAggregatedData.filter(
+            item =>
+                item.employee
+                .toLowerCase()
+                .includes(query)
+        );
+
+
+    cdUpdateKPIs();
+
+    cdRenderTable();
+
+    cdRenderCharts();
+
+}
+
+
+/* =========================================================
+   FORMATTERS
+========================================================= */
+
+function cdFmtMoney(num) {
+
+    return "₹" +
+        Number(num || 0)
+        .toLocaleString(
+            "en-IN",
+            {
+                maximumFractionDigits: 0
+            }
+        );
+
+}
+
+
+function cdFmtNum(num) {
+
+    return Number(num || 0)
+        .toLocaleString(
+            "en-IN",
+            {
+                maximumFractionDigits: 0
+            }
+        );
+
+}
+
+
+function cdFmtThreeDigitCurrency(amount) {
+
+    let num =
+        Number(amount || 0);
+
+    return (
+        num / 1e5
+    ).toFixed(2) + " L";
+
+}
+
+
+/* =========================================================
+   KPI
+========================================================= */
+
+function cdUpdateKPIs() {
+
+    let tEmp =
+        cdAggregatedData.length;
+
+    let tAlloc = 0;
+
+    let tAllocVal = 0;
+
+    let tPaid = 0;
+
+    let tPaidVal = 0;
+
+    let tTgt = 0;
+
+
+    cdAggregatedData.forEach(i => {
+
+        tAlloc +=
+            i.allocationCount;
+
+        tAllocVal +=
+            i.allocationVal;
+
+        tPaid +=
+            i.paidCount;
+
+        tPaidVal +=
+            i.paidVal;
+
+        tTgt +=
+            i.target;
+
+    });
+
+
+    const overallAch =
+        tTgt > 0
+            ? (tPaidVal / tTgt) * 100
+            : 0;
+
+
+    const setText =
+        (id, value) => {
+
+            const el =
+                document.getElementById(id);
+
+            if (el)
+                el.innerText = value;
+
+        };
+
+
+    setText(
+        "cdKpiEmployees",
+        cdFmtNum(tEmp)
+    );
+
+    setText(
+        "cdKpiAllocation",
+        cdFmtNum(tAlloc)
+    );
+
+    setText(
+        "cdKpiAllocationValue",
+        cdFmtMoney(tAllocVal)
+    );
+
+    setText(
+        "cdKpiPaid",
+        cdFmtNum(tPaid)
+    );
+
+    setText(
+        "cdKpiPaidValue",
+        cdFmtMoney(tPaidVal)
+    );
+
+    setText(
+        "cdKpiTargetValue",
+        cdFmtMoney(tTgt)
+    );
+
+    setText(
+        "cdKpiAchievement",
+        overallAch.toFixed(1) + "%"
+    );
+
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+function cdRenderTable() {
+
+    const tbody =
+        document.getElementById(
+            "cdTableBody"
+        );
+
+    const emptyView =
+        document.getElementById(
+            "cdEmptyStateView"
+        );
+
+    const counter =
+        document.getElementById(
+            "cdRowCountDisplay"
+        );
+
+
+    if (!tbody)
+        return;
+
+
+    tbody.innerHTML = "";
+
+
+    if (!cdFilteredData.length) {
+
+        if (emptyView)
+            emptyView.style.display =
+                "block";
+
+        if (counter)
+            counter.innerText =
+                "0 Employees Recorded";
+
+        return;
+
+    }
+
+
+    if (emptyView)
+        emptyView.style.display =
+            "none";
+
+
+    if (counter)
+        counter.innerText =
+            cdFilteredData.length +
+            " Employees Recorded";
+
+
+    cdFilteredData.forEach(
+        item => {
+
+            const tr =
+                document.createElement("tr");
+
+
+            let rankClass =
+                "mis-rank-badge";
+
+
+            if (item.rank === 1)
+                rankClass +=
+                    " mis-rank-1";
+
+            else if (item.rank === 2)
+                rankClass +=
+                    " mis-rank-2";
+
+            else if (item.rank === 3)
+                rankClass +=
+                    " mis-rank-3";
+
+
+            const initials =
+                item.employee
+                    .split(" ")
+                    .map(w =>
+                        w.charAt(0)
+                    )
+                    .slice(0, 2)
+                    .join("")
+                    .toUpperCase();
+
+
+            const progressPct =
+                Math.min(
+                    item.achievement,
+                    100
+                );
+
+
+            const achievementColor =
+                item.achievement >= 100
+                    ? "#10b981"
+                    : "#f59e0b";
+
+
+            tr.innerHTML = `
+
+                <td>
+                    <span class="${rankClass}">
+                        #${item.rank}
+                    </span>
+                </td>
+
+                <td>
+
+                    <div class="mis-employee-cell">
+
+                        <div class="mis-employee-avatar">
+                            ${cdEscapeHTML(initials)}
+                        </div>
+
+                        <div class="mis-employee-name">
+                            ${cdEscapeHTML(item.employee)}
+                        </div>
+
+                    </div>
+
+                </td>
+
+                <td class="mis-tabular-data mis-val-indigo">
+                    ${cdFmtNum(item.allocationCount)}
+                </td>
+
+                <td class="mis-tabular-data">
+                    ${cdFmtMoney(item.allocationVal)}
+                </td>
+
+                <td class="mis-tabular-data mis-val-emerald">
+                    ${cdFmtNum(item.paidCount)}
+                </td>
+
+                <td class="mis-tabular-data mis-val-emerald">
+                    ${cdFmtMoney(item.paidVal)}
+                </td>
+
+                <td class="mis-tabular-data">
+                    ${cdFmtMoney(item.target)}
+                </td>
+
+                <td>
+
+                    <div class="mis-tabular-data"
+                         style="color:${achievementColor}">
+
+                        <strong>
+                            ${item.achievement.toFixed(1)}%
+                        </strong>
+
+                    </div>
+
+                    <div class="mis-progress-container">
+
+                        <div class="mis-progress-fill"
+                             style="width:${progressPct}%">
+                        </div>
+
+                    </div>
+
+                </td>
+
+            `;
+
+
+            tbody.appendChild(tr);
+
+        }
+    );
+
+}
+
+
+function cdEscapeHTML(str) {
+
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+
+}
+
+
+/* =========================================================
+   CHARTS
+========================================================= */
+
+function cdRenderCharts() {
+
+    const barCanvas =
+        document.getElementById(
+            "cdBarChart"
+        );
+
+    const doughnutCanvas =
+        document.getElementById(
+            "cdDoughnutChart"
+        );
+
+
+    if (!barCanvas || !doughnutCanvas)
+        return;
+
+
+    const top10 =
+        cdFilteredData.slice(0, 10);
+
+
+    const vibrantColors = [
+
+        "#0ea5e9",
+        "#6366f1",
+        "#a855f7",
+        "#10b981",
+        "#f59e0b",
+        "#f43f5e",
+        "#3b82f6",
+        "#ec4899",
+        "#14b8a6",
+        "#8b5cf6"
+
+    ];
+
+
+    const barColors =
+        top10.map(
+            (_, index) =>
+                vibrantColors[
+                    index %
+                    vibrantColors.length
+                ]
+        );
+
+
+    const barCtx =
+        barCanvas.getContext("2d");
+
+
+    if (cdBarChartInstance)
+        cdBarChartInstance.destroy();
+
+
+    cdBarChartInstance =
+        new Chart(
+            barCtx,
+            {
+
+                type: "bar",
+
+                data: {
+
+                    labels:
+                        top10.map(
+                            i => i.employee
+                        ),
+
+                    datasets: [{
+
+                        label:
+                            "Achievement %",
+
+                        data:
+                            top10.map(
+                                i =>
+                                    Number(
+                                        i.achievement
+                                        .toFixed(1)
+                                    )
+                            ),
+
+                        backgroundColor:
+                            barColors,
+
+                        borderColor:
+                            barColors,
+
+                        borderWidth: 1,
+
+                        borderRadius: 6
+
+                    }]
+
+                },
+
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false,
+
+                    plugins: {
+
+                        legend: {
+                            display: false
+                        }
+
+                    },
+
+                    scales: {
+
+                        x: {
+
+                            grid: {
+                                display: false
+                            },
+
+                            ticks: {
+                                color: "#475569",
+                                font: {
+                                    size: 9
+                                }
+                            }
+
+                        },
+
+                        y: {
+
+                            grid: {
+                                color:
+                                    "rgba(0,0,0,0.05)"
+                            },
+
+                            ticks: {
+                                color: "#475569",
+                                font: {
+                                    size: 9
+                                }
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+        );
+
+
+    const totalCollected =
+        cdAggregatedData.reduce(
+            (acc, curr) =>
+                acc + curr.paidVal,
+            0
+        );
+
+
+    const totalTarget =
+        cdAggregatedData.reduce(
+            (acc, curr) =>
+                acc + curr.target,
+            0
+        );
+
+
+    const remainingTarget =
+        Math.max(
+            0,
+            totalTarget -
+            totalCollected
+        );
+
+
+    const centerTextPlugin = {
+
+        id:
+            'cdCenterTextPlugin',
+
+        afterDraw(chart) {
+
+            const {
+                ctx,
+                chartArea: {
+                    width,
+                    height
+                }
+            } = chart;
+
+
+            ctx.save();
+
+
+            const meta =
+                chart.getDatasetMeta(0);
+
+
+            const centerX =
+                meta.data[0]?.x ||
+                (width / 2);
+
+
+            const centerY =
+                meta.data[0]?.y ||
+                (height / 2);
+
+
+            ctx.textAlign =
+                'center';
+
+            ctx.textBaseline =
+                'middle';
+
+
+            ctx.font =
+                '700 9px "Plus Jakarta Sans", sans-serif';
+
+            ctx.fillStyle =
+                '#64748b';
+
+
+            ctx.fillText(
+                "COLLECTION AMOUNT",
+                centerX,
+                centerY - 2
+            );
+
+
+            ctx.font =
+                '700 14px "JetBrains Mono", monospace';
+
+            ctx.fillStyle =
+                '#10b981';
+
+
+            ctx.fillText(
+                cdFmtThreeDigitCurrency(
+                    totalCollected
+                ),
+                centerX,
+                centerY + 15
+            );
+
+
+            ctx.restore();
+
+        }
+
+    };
+
+
+    const doughnutCtx =
+        doughnutCanvas
+        .getContext("2d");
+
+
+    if (cdDoughnutChartInstance)
+        cdDoughnutChartInstance.destroy();
+
+
+    cdDoughnutChartInstance =
+        new Chart(
+            doughnutCtx,
+            {
+
+                type: "doughnut",
+
+                data: {
+
+                    labels: [
+                        "Collected Amount",
+                        "Remaining Target"
+                    ],
+
+                    datasets: [{
+
+                        data: [
+                            totalCollected,
+                            remainingTarget
+                        ],
+
+                        backgroundColor: [
+                            "#10b981",
+                            "#cbd5e1"
+                        ],
+
+                        borderWidth: 0
+
+                    }]
+
+                },
+
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false,
+
+                    plugins: {
+
+                        legend: {
+
+                            position: "bottom",
+
+                            labels: {
+
+                                color: "#475569",
+
+                                boxWidth: 10,
+
+                                font: {
+                                    size: 9
+                                }
+
+                            }
+
+                        }
+
+                    },
+
+                    cutout: "70%"
+
+                },
+
+
+                plugins: [
+                    centerTextPlugin
+                ]
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   TEMPLATE
+========================================================= */
+
+function cdDownloadTemplate() {
+
+    const template = [
+
+        {
+            "Employee Name":
+                "John Doe",
+
+            "Allocation Count":
+                45,
+
+            "Allocation Value":
+                500000,
+
+            "Paid Count":
+                32,
+
+            "Paid Value":
+                380000,
+
+            "Target Amount":
+                600000
+        },
+
+        {
+            "Employee Name":
+                "Jane Smith",
+
+            "Allocation Count":
+                50,
+
+            "Allocation Value":
+                650000,
+
+            "Paid Count":
+                45,
+
+            "Paid Value":
+                600000,
+
+            "Target Amount":
+                700000
+        },
+
+        {
+            "Employee Name":
+                "Robert Johnson",
+
+            "Allocation Count":
+                38,
+
+            "Allocation Value":
+                420000,
+
+            "Paid Count":
+                20,
+
+            "Paid Value":
+                210000,
+
+            "Target Amount":
+                500000
+        }
+
+    ];
+
+
+    const ws =
+        XLSX.utils.json_to_sheet(
+            template
+        );
+
+
+    const wb =
+        XLSX.utils.book_new();
+
+
+    XLSX.utils.book_append_sheet(
+        wb,
+        ws,
+        "CD Recovery MIS Template"
+    );
+
+
+    XLSX.writeFile(
+        wb,
+        "CD_Recovery_MIS_Template.xlsx"
+    );
+
+}
+
+
+/* =========================================================
+   EXPORT
+========================================================= */
+
+function cdExportReport() {
+
+    if (!cdAggregatedData.length) {
+
+        alert(
+            "No active aggregated records available for export."
+        );
+
+        return;
+
+    }
+
+
+    const exportRows =
+        cdAggregatedData.map(i => ({
+
+            "Rank":
+                i.rank,
+
+            "Employee Name":
+                i.employee,
+
+            "Allocation Count":
+                i.allocationCount,
+
+            "Allocation Value":
+                i.allocationVal,
+
+            "Paid Count":
+                i.paidCount,
+
+            "Paid Value":
+                i.paidVal,
+
+            "Target Amount":
+                i.target,
+
+            "Achievement (%)":
+                Number(
+                    i.achievement.toFixed(2)
+                )
+
+        }));
+
+
+    const ws =
+        XLSX.utils.json_to_sheet(
+            exportRows
+        );
+
+
+    const wb =
+        XLSX.utils.book_new();
+
+
+    XLSX.utils.book_append_sheet(
+        wb,
+        ws,
+        "CD Recovery Report"
+    );
+
+
+    XLSX.writeFile(
+        wb,
+        "CD_Recovery_MIS_Report.xlsx"
+    );
+
+}
+
+
+/* =========================================================
+   EMPLOYEE DIRECTORY
+========================================================= */
+
+function loadEmployees() {
+
+    let table =
+        document.getElementById(
+            "employeeTable"
+        );
+
+    employees = [];
+
+
+    for (
+        let i = 1;
+        i < table.rows.length;
+        i++
+    ) {
+
+        let row =
+            table.rows[i];
+
+
+        employees.push({
+
+            empCode:
+                row.cells[1].innerText,
+
+            name:
+                row.cells[2].innerText,
+
+            role:
+                row.cells[3].innerText,
+
+            product:
+                row.cells[4].innerText
+
+        });
+
+    }
+
+}
+
+
+function updateDashboard(
+    filteredEmployees
+) {
+
+    document.getElementById(
+        "totalCount"
+    ).innerText =
+        filteredEmployees.length;
+
+
+    document.getElementById(
+        "managerCount"
+    ).innerText =
+        filteredEmployees.filter(
+            e => e.role === "Manager"
+        ).length;
+
+
+    document.getElementById(
+        "asstManagerCount"
+    ).innerText =
+        filteredEmployees.filter(
+            e =>
+                e.role ===
+                "Assistant Manager"
+        ).length;
+
+
+    document.getElementById(
+        "teamLeaderCount"
+    ).innerText =
+        filteredEmployees.filter(
+            e =>
+                e.role ===
+                "Team Leader"
+        ).length;
+
+
+    document.getElementById(
+        "misCount"
+    ).innerText =
+        filteredEmployees.filter(
+            e =>
+                e.role ===
+                "MIS Executive"
+        ).length;
+
+
+    document.getElementById(
+        "fieldCount"
+    ).innerText =
+        filteredEmployees.filter(
+            e =>
+                e.role ===
+                "Field Executive"
+        ).length;
+
+
+    document.getElementById(
+        "teleCount"
+    ).innerText =
+        filteredEmployees.filter(
+            e =>
+                e.role ===
+                "Tele Caller"
+        ).length;
+
+}
+
+
+function showProduct(
+    product,
+    btn = null
+) {
+
+    let rows =
+        document.querySelectorAll(
+            "#employeeTable tr"
+        );
+
+    let filteredEmployees = [];
+
+
+    for (
+        let i = 1;
+        i < rows.length;
+        i++
+    ) {
+
+        let rowProduct =
+            rows[i].cells[4].innerText;
+
+
+        if (
+            product === "all" ||
+            rowProduct === product
+        ) {
+
+            rows[i].style.display =
+                "";
+
+            filteredEmployees.push({
+
+                empCode:
+                    rows[i].cells[1].innerText,
+
+                name:
+                    rows[i].cells[2].innerText,
+
+                role:
+                    rows[i].cells[3].innerText,
+
+                product:
+                    rows[i].cells[4].innerText
+
+            });
+
+        }
+
+        else {
+
+            rows[i].style.display =
+                "none";
+
+        }
+
+    }
+
+
+    renumberTable();
+
+    updateDashboard(
+        filteredEmployees
+    );
+
+
+    document.querySelectorAll(
+        '.product-btn'
+    ).forEach(
+        b =>
+            b.classList.remove(
+                'active'
+            )
+    );
+
+
+    if (
+        btn &&
+        !btn.classList.contains(
+            'download-btn'
+        )
+    ) {
+
+        btn.classList.add(
+            'active'
+        );
+
+    }
+
+
+    document.querySelectorAll(
+        ".card"
+    ).forEach(
+        card =>
+            card.classList.remove(
+                "active-card"
+            )
+    );
+
+}
+
+
+function showRole(role) {
+
+    let rows =
+        document.querySelectorAll(
+            "#employeeTable tr"
+        );
+
+    let filteredEmployees = [];
+
+
+    for (
+        let i = 1;
+        i < rows.length;
+        i++
+    ) {
+
+        let rowRole =
+            rows[i].cells[3].innerText;
+
+
+        if (
+            role === "all" ||
+            rowRole === role
+        ) {
+
+            rows[i].style.display =
+                "";
+
+            filteredEmployees.push({
+
+                empCode:
+                    rows[i].cells[1].innerText,
+
+                name:
+                    rows[i].cells[2].innerText,
+
+                role:
+                    rows[i].cells[3].innerText,
+
+                product:
+                    rows[i].cells[4].innerText
+
+            });
+
+        }
+
+        else {
+
+            rows[i].style.display =
+                "none";
+
+        }
+
+    }
+
+
+    renumberTable();
+
+    updateDashboard(
+        filteredEmployees
+    );
+
+
+    let cards =
+        document.querySelectorAll(
+            ".card"
+        );
+
+
+    cards.forEach(
+        card =>
+            card.classList.remove(
+                "active-card"
+            )
+    );
+
+
+    for (let card of cards) {
+
+        if (
+            role === "all" &&
+            card.innerText.includes(
+                "Total"
+            )
+        ) {
+
+            card.classList.add(
+                "active-card"
+            );
+
+        }
+
+
+        if (
+            role !== "all" &&
+            card.innerText.includes(
+                role
+            )
+        ) {
+
+            card.classList.add(
+                "active-card"
+            );
+
+        }
+
+    }
+
+
+    document.querySelectorAll(
+        ".product-btn"
+    ).forEach(
+        b =>
+            b.classList.remove(
+                'active'
+            )
+    );
+
+}
+
+
+function renumberTable() {
+
+    let rows =
+        document.querySelectorAll(
+            "#employeeTable tr"
+        );
+
+    let count = 1;
+
+
+    for (
+        let i = 1;
+        i < rows.length;
+        i++
+    ) {
+
+        if (
+            rows[i].style.display !==
+            "none"
+        ) {
+
+            rows[i].cells[0]
+                .innerText =
+                count++;
+
+        }
+
+    }
+
+}
+
+
+function searchTable() {
+
+    let input =
+        document.getElementById(
+            "searchInput"
+        )
+        .value
+        .toLowerCase();
+
+
+    let rows =
+        document.querySelectorAll(
+            "#employeeTable tr"
+        );
+
+    let filteredEmployees = [];
+
+
+    for (
+        let i = 1;
+        i < rows.length;
+        i++
+    ) {
+
+        let name =
+            rows[i].cells[2]
+            .innerText
+            .toLowerCase();
+
+        let empCode =
+            rows[i].cells[1]
+            .innerText
+            .toLowerCase();
+
+
+        if (
+            name.includes(input) ||
+            empCode.includes(input)
+        ) {
+
+            rows[i].style.display =
+                "";
+
+            filteredEmployees.push({
+
+                empCode:
+                    rows[i].cells[1].innerText,
+
+                name:
+                    rows[i].cells[2].innerText,
+
+                role:
+                    rows[i].cells[3].innerText,
+
+                product:
+                    rows[i].cells[4].innerText
+
+            });
+
+        }
+
+        else {
+
+            rows[i].style.display =
+                "none";
+
+        }
+
+    }
+
+
+    renumberTable();
+
+    updateDashboard(
+        filteredEmployees
+    );
+
+}
+
+
+function addEmployee() {
+
+    let empCode =
+        prompt(
+            "Enter Employee Code"
+        );
+
+    if (!empCode)
+        return;
+
+
+    let name =
+        prompt(
+            "Enter Name"
+        );
+
+    if (!name)
+        return;
+
+
+    let role =
+        prompt(
+            "Enter Designation"
+        );
+
+    if (!role)
+        return;
+
+
+    let product =
+        prompt(
+            "Enter Product (e.g., Hdfc-Cd, Axis-Bkt-1, etc.)"
+        );
+
+    if (!product)
+        return;
+
+
+    let table =
+        document.getElementById(
+            "employeeTable"
+        );
+
+
+    let row =
+        table.insertRow();
+
+
+    row.insertCell(0).innerHTML =
+        table.rows.length - 1;
+
+    row.insertCell(1).innerHTML =
+        empCode;
+
+    row.insertCell(2).innerHTML =
+        name;
+
+    row.insertCell(3).innerHTML =
+        role;
+
+    row.insertCell(4).innerHTML =
+        product;
+
+
+    loadEmployees();
+
+    showProduct('all');
+
+}
+
+
+function downloadExcel() {
+
+    let table =
+        document.getElementById(
+            "employeeTable"
+        );
+
+
+    let wb =
+        XLSX.utils.book_new();
+
+
+    wb.Props = {
+
+        Title:
+            "Employee List",
+
+        Author:
+            "AI Dashboard",
+
+        CreatedDate:
+            new Date()
+
+    };
+
+
+    let data = [];
+
+
+    let rows =
+        table.querySelectorAll(
+            "tr"
+        );
+
+
+    rows.forEach(
+        (row, index) => {
+
+            if (
+                row.style.display !==
+                "none" ||
+                index === 0
+            ) {
+
+                let rowData = [];
+
+
+                row.querySelectorAll(
+                    "th, td"
+                ).forEach(
+                    cell =>
+                        rowData.push(
+                            cell.innerText
+                        )
+                );
+
+
+                data.push(
+                    rowData
+                );
+
+            }
+
+        }
+    );
+
+
+    let ws =
+        XLSX.utils.aoa_to_sheet(
+            data
+        );
+
+
+    XLSX.utils.book_append_sheet(
+        wb,
+        ws,
+        "Employees"
+    );
+
+
+    XLSX.writeFile(
+        wb,
+        "Employee_List.xlsx"
+    );
+
+}
+
 </script>
 
 </body>
